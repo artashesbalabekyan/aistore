@@ -57,16 +57,22 @@ type (
 	}
 
 	ExtraPropsAWS struct {
-		CloudRegion string `json:"cloud_region,omitempty" list:"readonly"`
+		CloudRegion string `json:"cloud_region,omitempty"`
 
 		// from https://github.com/aws/aws-sdk-go/blob/main/aws/config.go:
 		//   "An optional endpoint URL (hostname only or fully qualified URI)
 		//    that overrides the default generated endpoint."
 		Endpoint string `json:"endpoint,omitempty"`
+
+		AccessKeyID     string `json:"access_key_id,omitempty"`
+		SecretAccessKey string `json:"secret_access_key,omitempty"`
 	}
 	ExtraPropsAWSToUpdate struct {
 		CloudRegion *string `json:"cloud_region"`
 		Endpoint    *string `json:"endpoint"`
+
+		AccessKeyID     *string `json:"access_key_id"`
+		SecretAccessKey *string `json:"secret_access_key"`
 	}
 
 	ExtraPropsHTTP struct {

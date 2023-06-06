@@ -28,6 +28,7 @@ import (
 	"github.com/NVIDIA/aistore/fs"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
+	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/endpoints"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
@@ -488,6 +489,8 @@ func (*awsProvider) DeleteObj(lom *cluster.LOM) (errCode int, err error) {
 func newClient(conf sessConf, tag string) (svc *s3.S3, region string, err error) {
 	endpoint := s3Endpoint
 	region = conf.region
+	accessKeyID := ""
+	secretAccessKey := ""
 	if conf.bck != nil && conf.bck.Props != nil {
 		if region == "" {
 			region = conf.bck.Props.Extra.AWS.CloudRegion
@@ -495,22 +498,39 @@ func newClient(conf sessConf, tag string) (svc *s3.S3, region string, err error)
 		if conf.bck.Props.Extra.AWS.Endpoint != "" {
 			endpoint = conf.bck.Props.Extra.AWS.Endpoint
 		}
-	}
-
-	// reuse
-	if region != "" {
-		cmu.RLock()
-		svc = clients[region][endpoint]
-		cmu.RUnlock()
-		if svc != nil {
-			return
+		if conf.bck.Props.Extra.AWS.AccessKeyID != "" {
+			accessKeyID = conf.bck.Props.Extra.AWS.AccessKeyID
+		}
+		if conf.bck.Props.Extra.AWS.SecretAccessKey != "" {
+			secretAccessKey = conf.bck.Props.Extra.AWS.SecretAccessKey
 		}
 	}
+
+	// don't reuse
+	// if region != "" {
+	// 	cmu.RLock()
+	// 	svc = clients[region][endpoint]
+	// 	cmu.RUnlock()
+	// 	if svc != nil {
+	// 		return
+	// 	}
+	// }
 	// create
 	var (
 		sess    = _session(endpoint)
 		awsConf = &aws.Config{}
 	)
+
+	if accessKeyID != "" && secretAccessKey != "" {
+		creds := credentials.NewStaticCredentialsFromCreds(credentials.Value{
+			AccessKeyID:     accessKeyID,
+			SecretAccessKey: secretAccessKey,
+			ProviderName:    "customCredentialsProvider",
+		})
+
+		awsConf.Credentials = creds
+	}
+
 	if region == "" {
 		if tag != "" {
 			err = fmt.Errorf("%s: unknown region for bucket %s -- proceeding with default", tag, conf.bck)

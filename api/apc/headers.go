@@ -22,8 +22,10 @@ const (
 	HdrBackendProvider  = HeaderPrefix + "provider"           // ProviderAmazon et al. - see cmn/bck.go.
 
 	// including BucketProps.Extra.AWS
-	HdrS3Region   = HeaderPrefix + "cloud_region"
-	HdrS3Endpoint = HeaderPrefix + "endpoint"
+	HdrS3Region          = HeaderPrefix + "cloud_region"
+	HdrS3Endpoint        = HeaderPrefix + "endpoint"
+	HdrS3AccessKeyID     = HeaderPrefix + "access_key_id"
+	HdrS3SecretAccessKey = HeaderPrefix + "secret_access_key"
 
 	// including BucketProps.Extra.HTTP
 	HdrOrigURLBck = HeaderPrefix + "original-url"

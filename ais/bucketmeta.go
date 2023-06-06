@@ -540,6 +540,8 @@ func mergeRemoteBckProps(props *cmn.BucketProps, header http.Header) *cmn.Bucket
 	case apc.AWS:
 		props.Extra.AWS.CloudRegion = header.Get(apc.HdrS3Region)
 		props.Extra.AWS.Endpoint = header.Get(apc.HdrS3Endpoint)
+		props.Extra.AWS.AccessKeyID = header.Get(apc.HdrS3AccessKeyID)
+		props.Extra.AWS.SecretAccessKey = header.Get(apc.HdrS3SecretAccessKey)
 	case apc.HTTP:
 		props.Extra.HTTP.OrigURLBck = header.Get(apc.HdrOrigURLBck)
 	}
