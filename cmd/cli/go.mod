@@ -2,6 +2,8 @@ module github.com/NVIDIA/aistore/cmd/cli
 
 go 1.20
 
+replace github.com/NVIDIA/aistore => github.com/artashesbalabekyan/aistore v1.3.17
+
 // direct
 require (
 	github.com/NVIDIA/aistore v1.3.18-0.20230603175017-0e3a0bf163fb
