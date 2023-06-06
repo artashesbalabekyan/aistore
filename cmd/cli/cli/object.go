@@ -7,7 +7,6 @@ package cli
 
 import (
 	"fmt"
-	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -23,12 +22,6 @@ import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/urfave/cli"
 	"github.com/vbauerster/mpb/v4"
-)
-
-const (
-	dryRunExamplesCnt = 10
-	dryRunHeader      = "[DRY RUN]"
-	dryRunExplanation = "No modifications on the cluster"
 )
 
 // Promote AIS-colocated files and directories to objects.
@@ -109,79 +102,64 @@ func absPath(fileName string) (path string, err error) {
 	return
 }
 
-// Returns longest common prefix ending with '/' (exclusive) for objects in the template
-// /path/to/dir/test{0..10}/dir/another{0..10} => /path/to/dir
-// /path/to/prefix-@00001-gap-@100-suffix => /path/to
-func rangeTrimPrefix(pt *cos.ParsedTemplate) string {
-	sepaIndex := strings.LastIndex(pt.Prefix, string(os.PathSeparator))
-	debug.Assert(sepaIndex >= 0)
-	return pt.Prefix[:sepaIndex+1]
-}
-
-func _putFrom(s string, recurs bool) (tag string) {
-	if recurs {
-		tag = s + "(recursive)"
-	} else {
-		tag = s + "(non-recursive)"
-	}
-	return
-}
-
-func putList(c *cli.Context, fnames []string, bck cmn.Bck, appendPrefixSubdir string) error {
+func verbList(c *cli.Context, wop wop, fnames []string, bck cmn.Bck, appendPref string, incl bool) error {
 	var (
-		allFiles = make([]fobj, 0, len(fnames))
+		ndir     int
+		allFobjs = make([]fobj, 0, len(fnames))
 		recurs   = flagIsSet(c, recursFlag)
 	)
 	for _, n := range fnames {
-		files, err := lsFobj(c, n, "", appendPrefixSubdir, recurs)
+		fobjs, err := lsFobj(c, n, "", appendPref, &ndir, recurs, incl)
 		if err != nil {
 			return err
 		}
-		allFiles = append(allFiles, files...)
+		allFobjs = append(allFobjs, fobjs...)
 	}
-	tag := _putFrom(" ", recurs)
-	return putFobjs(c, allFiles, bck, tag)
+	return verbFobjs(c, wop, allFobjs, bck, ndir, recurs)
 }
 
-func putRange(c *cli.Context, pt *cos.ParsedTemplate, bck cmn.Bck, trimPrefix, appendPrefixSubdir string) (err error) {
+func verbRange(c *cli.Context, wop wop, pt *cos.ParsedTemplate, bck cmn.Bck, trimPref, appendPref string, incl bool) (err error) {
 	var (
-		allFiles = make([]fobj, 0, pt.Count())
+		ndir     int
+		allFobjs = make([]fobj, 0, pt.Count())
 		recurs   = flagIsSet(c, recursFlag)
 	)
 	pt.InitIter()
 	for n, hasNext := pt.Next(); hasNext; n, hasNext = pt.Next() {
-		files, err := lsFobj(c, n, trimPrefix, appendPrefixSubdir, recurs)
+		fobjs, err := lsFobj(c, n, trimPref, appendPref, &ndir, recurs, incl)
 		if err != nil {
 			return err
 		}
-		allFiles = append(allFiles, files...)
+		allFobjs = append(allFobjs, fobjs...)
 	}
-	tag := _putFrom(" ", recurs)
-	return putFobjs(c, allFiles, bck, tag)
+	return verbFobjs(c, wop, allFobjs, bck, ndir, recurs)
 }
 
 func concatObject(c *cli.Context, bck cmn.Bck, objName string, fileNames []string) error {
 	const verb = "Compose"
 	var (
-		totalSize  int64
-		bar        *mpb.Bar
-		progress   *mpb.Progress
+		totalSize int64
+		ndir      int
+		bar       *mpb.Bar
+		progress  *mpb.Progress
+
 		l          = len(fileNames)
-		fobjMatrix = make([]fobjSlice, l)
+		fobjMatrix = make([]fobjs, l)
 		sizes      = make(map[string]int64, l) // or greater
 		name       = bck.Cname(objName)
+		recurs     = flagIsSet(c, recursFlag)
 	)
 	for i, fileName := range fileNames {
-		fsl, err := lsFobj(c, fileName, "", "", flagIsSet(c, recursFlag))
+		fobjs, err := lsFobj(c, fileName, "", "", &ndir, recurs, false /*incl src dir*/)
 		if err != nil {
 			return err
 		}
-		sort.Sort(fsl)
-		for _, f := range fsl {
+		sort.Sort(fobjs)
+		for _, f := range fobjs {
 			totalSize += f.size
 			sizes[f.path] = f.size
 		}
-		fobjMatrix[i] = fsl
+		fobjMatrix[i] = fobjs
 	}
 	// setup progress bar
 	if flagIsSet(c, progressFlag) {
@@ -191,7 +169,9 @@ func concatObject(c *cli.Context, bck cmn.Bck, objName string, fileNames []strin
 		case 2, 3:
 			fmt.Fprintf(c.App.Writer, "%s %v as %s\n", verb, fileNames, name)
 		default:
-			fmt.Fprintf(c.App.Writer, "%s %d pathnames as %s\n", verb, l, name)
+			tag := fmt.Sprintf("%s %d pathnames", verb, l)
+			tag += ndir2tag(ndir, recurs)
+			fmt.Fprintf(c.App.Writer, "%s as %s\n", tag, name)
 		}
 		var (
 			bars []*mpb.Bar
@@ -288,7 +268,7 @@ func showObjProps(c *cli.Context, bck cmn.Bck, object string) error {
 			return err
 		}
 		var hint string
-		if apc.IsFltPresent(fltPresence) {
+		if apc.IsFltPresent(fltPresence) && bck.IsRemote() {
 			hint = fmt.Sprintf(" (hint: try %s option)", qflprn(objNotCachedPropsFlag))
 		}
 		return fmt.Errorf("%q not found in %s%s", object, bck.Cname(""), hint)

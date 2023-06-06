@@ -143,9 +143,6 @@ const (
 	cmdSetBprops   = "set"
 	cmdResetBprops = cmdReset
 
-	// Archive subcommands
-	cmdAppend = "append"
-
 	// AuthN subcommands
 	cmdAuthAdd     = "add"
 	cmdAuthShow    = "show"
@@ -249,14 +246,16 @@ const (
 	bucketNewArgument      = "NEW_BUCKET"
 
 	// Objects
-	getObjectArgument       = "BUCKET[/OBJECT_NAME] [OUT_FILE|-]"
-	putObjectArgument       = "[-|FILE|DIRECTORY[/PATTERN]] BUCKET[/OBJECT_NAME]"
-	promoteObjectArgument   = "FILE|DIRECTORY[/PATTERN] BUCKET[/OBJECT_NAME]"
-	concatObjectArgument    = "FILE|DIRECTORY[/PATTERN] [ FILE|DIRECTORY[/PATTERN] ...] BUCKET/OBJECT_NAME"
+	getObjectArgument = "BUCKET[/OBJECT_NAME] [OUT_FILE|-]"
+
+	putObjectArgument     = "[-|FILE|DIRECTORY[/PATTERN]] BUCKET[/OBJECT_NAME]"
+	putApndArchArgument   = "[-|FILE|DIRECTORY[/PATTERN]] BUCKET/SHARD_NAME"
+	promoteObjectArgument = "FILE|DIRECTORY[/PATTERN] BUCKET[/OBJECT_NAME]"
+	concatObjectArgument  = "FILE|DIRECTORY[/PATTERN] [ FILE|DIRECTORY[/PATTERN] ...] BUCKET/OBJECT_NAME"
+
 	objectArgument          = "BUCKET/OBJECT_NAME"
 	optionalObjectsArgument = "BUCKET[/OBJECT_NAME]..."
 	renameObjectArgument    = "BUCKET/OBJECT_NAME NEW_OBJECT_NAME"
-	appendToArchArgument    = "FILE BUCKET/SHARD_NAME"
 
 	setCustomArgument = objectArgument + " " + jsonKeyValueArgument + " | " + keyValuePairsArgument + ", e.g.:\n" +
 		indent1 +
@@ -551,7 +550,8 @@ var (
 		Usage: "remove old bucket and create it again (warning: removes the entire content of the old bucket)",
 	}
 	concurrencyFlag = cli.IntFlag{
-		Name: "conc", Value: 10,
+		Name:  "conc",
+		Value: 10,
 		Usage: "limits number of concurrent put requests and number of concurrent shards created",
 	}
 
@@ -703,33 +703,29 @@ var (
 
 	// archive
 	listArchFlag = cli.BoolFlag{Name: "archive", Usage: "list archived content (see docs/archive.md for details)"}
-	putArchFlag  = cli.BoolFlag{Name: "archive", Usage: "archive a given list ('--list') or range ('--template') of objects"}
 
 	archpathFlag = cli.StringFlag{
 		Name:  "archpath",
 		Usage: "filename in archive",
 	}
 
-	includeSrcBucketNameFlag = cli.BoolFlag{
+	inclSrcBucketNameFlag = cli.BoolFlag{
 		Name:  "include-src-bck",
-		Usage: "prefix names of archived objects with the source bucket name",
+		Usage: "prefix the names of archived files with the source bucket name",
 	}
-	// via 'ais archive': PUT arch operation with an option to APPEND if already exists
-	apndArchIf1Flag = cli.BoolFlag{
-		Name: "append",
-		Usage: "if destination object (\"archive\", \"shard\") already exists, append to it\n" +
-			indent4 + "\t(instead of creating a new one)",
+	inclSrcDirNameFlag = cli.BoolFlag{
+		Name:  "include-src-dir",
+		Usage: "prefix the names of archived files with the (root) source directory (omitted by default)",
 	}
-	// same as above via 'ais put'
-	apndArchIf2Flag = cli.BoolFlag{
-		Name: "arch-append-if-exists",
-		Usage: "if destination object (\"archive\", \"shard\") already exists, append to it\n" +
-			indent4 + "\t(instead of creating a new one)",
+	// 'ais archive put': conditional APPEND
+	archAppendIfExistFlag = cli.BoolFlag{
+		Name:  "append-if",
+		Usage: "if destination object (\"archive\", \"shard\") exists append to it, otherwise archive a new one",
 	}
-	// APPEND to arch operation: option to PUT (ie., create) if doesn't exist (compare with the above)
-	putArchIfNotExistFlag = cli.BoolFlag{
-		Name:  "put",
-		Usage: "if destination object (\"archive\", \"shard\") does not exist, create a new one",
+	// 'ais archive put': unconditional APPEND
+	archAppendFlag = cli.BoolFlag{
+		Name:  "append",
+		Usage: "add newly archived content to the destination object (\"archive\", \"shard\") that must exist",
 	}
 
 	continueOnErrorFlag = cli.BoolFlag{

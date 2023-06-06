@@ -8,7 +8,6 @@ package cli
 import (
 	"context"
 	"encoding/hex"
-	"errors"
 	"fmt"
 	"io"
 	"path/filepath"
@@ -29,19 +28,34 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
+// TODO: destination naming: consider adding (explicit) '--trimprefix', here and elsewhere
+
 var (
 	archCmdsFlags = map[string][]cli.Flag{
-		commandPut: {
+		commandBucket: {
 			templateFlag,
 			listFlag,
-			includeSrcBucketNameFlag,
-			apndArchIf1Flag,
+			dryRunFlag,
+			inclSrcBucketNameFlag,
+			archAppendIfExistFlag,
 			continueOnErrorFlag,
+			waitFlag,
 		},
-		cmdAppend: {
+		commandPut: append(
+			listrangeFileFlags,
+			archAppendIfExistFlag,
+			archAppendFlag,
 			archpathFlag,
-			putArchIfNotExistFlag,
-		},
+			concurrencyFlag,
+			dryRunFlag,
+			recursFlag,
+			verboseFlag,
+			yesFlag,
+			unitsFlag,
+			inclSrcDirNameFlag,
+			skipVerCksumFlag,
+			continueOnErrorFlag, // TODO -- FIXME
+		),
 		cmdList: {
 			objPropsFlag,
 			allPropsFlag,
@@ -56,26 +70,31 @@ var (
 
 	archCmd = cli.Command{
 		Name:  commandArch,
-		Usage: "Put multi-object archive; append files and directories to an existing archive; list archived content",
+		Usage: "Archive multiple objects from a given bucket; archive local files and directories; list archived content",
 		Subcommands: []cli.Command{
 			{
-				Name:         commandPut,
-				Usage:        "put multi-object " + archExts + " archive",
-				ArgsUsage:    bucketSrcArgument + " " + bucketDstArgument + "/OBJECT_NAME",
-				Flags:        archCmdsFlags[commandPut],
+				Name:         commandBucket,
+				Usage:        "archive multiple objects from " + bucketSrcArgument + " as " + archExts + "-formatted shard",
+				ArgsUsage:    bucketSrcArgument + " " + bucketDstArgument + "/SHARD_NAME",
+				Flags:        archCmdsFlags[commandBucket],
 				Action:       archMultiObjHandler,
 				BashComplete: putPromApndCompletions,
 			},
 			{
-				Name: cmdAppend,
-				Usage: "append file, directory, or multiple files and/or directories to\n" +
-					indent4 + "\t" + archExts + "-formatted object (\"shard\")\n" +
-					indent4 + "\t" + "e.g.:\n" +
-					indent4 + "\t" + "- 'local-filename bucket/shard-00123.tar.lz4 --archpath name-in-archive' - append one file\n" +
-					indent4 + "\t" + "- 'src-dir bucket/shard-99999.zip -put' - append a directory; iff the destination .zip doesn't exist create a new one",
-				ArgsUsage:    appendToArchArgument,
-				Flags:        archCmdsFlags[cmdAppend],
-				Action:       appendArchHandler,
+				Name: commandPut,
+				Usage: "archive a file, a directory, or multiple files and/or directories \n" +
+					indent1 + "as a " + archExts + "-formatted object (\"shard\").\n" +
+					indent1 + "Both APPEND (to an existing shard) and PUT (new version) variants are supported.\n" +
+					indent1 + "Examples:\n" +
+					indent1 + "- 'local-filename bucket/shard-00123.tar.lz4 --archpath name-in-archive' - append a file to a given shard and name it as specified;\n" +
+					indent1 + "- 'src-dir bucket/shard-99999.zip -put' - one directory; iff the destination .zip doesn't exist create a new one;\n" +
+					indent1 + "- '\"sys, docs\" ais://dst/CCC.tar --dry-run -y -r --archpath ggg/' - dry-run to recursively archive two directories.\n" +
+					indent1 + "Tips:\n" +
+					indent1 + "- use '--dry-run' option if in doubt;\n" +
+					indent1 + "- to archive objects from a local or remote bucket, run 'ais archive bucket', see --help for details.",
+				ArgsUsage:    putApndArchArgument,
+				Flags:        archCmdsFlags[commandPut],
+				Action:       putApndArchHandler,
 				BashComplete: putPromApndCompletions,
 			},
 			{
@@ -100,70 +119,140 @@ var (
 	}
 )
 
-func archMultiObjHandler(c *cli.Context) (err error) {
-	var a archargs
-
-	a.apndIfExist = flagIsSet(c, apndArchIf1Flag) || flagIsSet(c, apndArchIf2Flag)
-	if err = a.parse(c); err != nil {
-		return
+func archMultiObjHandler(c *cli.Context) error {
+	// parse
+	var a archbck
+	a.apndIfExist = flagIsSet(c, archAppendIfExistFlag)
+	if err := a.parse(c); err != nil {
+		return err
 	}
-	msg := cmn.ArchiveMsg{ToBck: a.dst.bck}
+	// api msg
+	msg := cmn.ArchiveBckMsg{ToBck: a.dst.bck}
 	{
 		msg.ArchName = a.dst.oname
-		msg.InclSrcBname = flagIsSet(c, includeSrcBucketNameFlag)
+		msg.InclSrcBname = flagIsSet(c, inclSrcBucketNameFlag)
 		msg.ContinueOnError = flagIsSet(c, continueOnErrorFlag)
 		msg.AppendIfExists = a.apndIfExist
 		msg.ListRange = a.rsrc.lr
 	}
-	_, err = api.ArchiveMultiObj(apiBP, a.rsrc.bck, msg)
+	// dry-run
+	if flagIsSet(c, dryRunFlag) {
+		dryRunCptn(c)
+		what := msg.ListRange.Template
+		if msg.ListRange.IsList() {
+			what = strings.Join(msg.ListRange.ObjNames, ", ")
+		}
+		fmt.Fprintf(c.App.Writer, "archive %s/{%s} as %q\n", a.rsrc.bck, what, a.dest())
+		return nil
+	}
+	// do
+	_, err := api.ArchiveMultiObj(apiBP, a.rsrc.bck, msg)
 	if err != nil {
 		return err
 	}
-	for i := 0; i < 3; i++ {
-		time.Sleep(time.Second)
-		_, err = api.HeadObject(apiBP, a.dst.bck, a.dst.oname, apc.FltPresentNoProps)
-		if err == nil {
-			fmt.Fprintf(c.App.Writer, "Archived %q\n", a.dst.bck.Cname(a.dst.oname))
-			return nil
-		}
+	// check (NOTE: not waiting through idle-ness, not looking at multiple returned xids)
+	var (
+		total time.Duration
+		sleep = time.Second / 2
+		maxw  = 2 * time.Second
+	)
+	if flagIsSet(c, waitFlag) {
+		maxw = 8 * time.Second
 	}
-	fmt.Fprintf(c.App.Writer, "Archiving %q ...\n", a.dst.bck.Cname(a.dst.oname))
+	for total < maxw {
+		if _, errV := api.HeadObject(apiBP, a.dst.bck, a.dst.oname, apc.FltPresentNoProps); errV == nil {
+			goto ex
+		}
+		time.Sleep(sleep)
+		total += sleep
+	}
+ex:
+	actionDone(c, "Archived "+a.dest())
 	return nil
 }
 
-func appendArchHandler(c *cli.Context) (err error) {
-	if c.NArg() < 2 {
-		// TODO -- FIXME
-		return errors.New("not implemented yet (currently, expecting local file and bucket/shard)")
+func putApndArchHandler(c *cli.Context) (err error) {
+	a := archput{
+		archpath:   parseStrFlag(c, archpathFlag),
+		appendOnly: flagIsSet(c, archAppendFlag),
+		appendIf:   flagIsSet(c, archAppendIfExistFlag),
 	}
-	a := a2args{
-		archpath:      parseStrFlag(c, archpathFlag),
-		putIfNotExist: flagIsSet(c, putArchIfNotExistFlag),
+	if a.appendOnly && a.appendIf {
+		return incorrectUsageMsg(c, errFmtExclusive, qflprn(archAppendFlag), qflprn(archAppendIfExistFlag))
 	}
 	if err = a.parse(c); err != nil {
 		return
 	}
-	// NOTE [convention]: naming default when '--archpath' is omitted
-	if a.archpath == "" {
-		a.archpath = filepath.Base(a.src.abspath)
+	if flagIsSet(c, dryRunFlag) {
+		dryRunCptn(c)
 	}
-	if err = a2a(c, &a); err == nil {
-		msg := fmt.Sprintf("APPEND %s to %s", a.src.arg, a.dst.bck.Cname(a.dst.oname))
+	if a.srcIsRegular() {
+		// [convention]: naming default when '--archpath' is omitted
+		if a.archpath == "" {
+			a.archpath = filepath.Base(a.src.abspath)
+		}
+		if err = a2aRegular(c, &a); err != nil {
+			return
+		}
+		msg := fmt.Sprintf("%s %s to %s", a.verb(), a.src.arg, a.dst.bck.Cname(a.dst.oname))
 		if a.archpath != a.src.arg {
 			msg += " as \"" + a.archpath + "\""
 		}
 		actionDone(c, msg+"\n")
+		return
 	}
-	return
+
+	//
+	// multi-file cases
+	//
+
+	// archpath
+	if a.archpath != "" && !strings.HasSuffix(a.archpath, "/") {
+		if !flagIsSet(c, yesFlag) {
+			warn := fmt.Sprintf("no traling filepath separator in: '%s=%s'", qflprn(archpathFlag), a.archpath)
+			actionWarn(c, warn)
+			if ok := confirm(c, "Proceed anyway?"); !ok {
+				return
+			}
+		}
+	}
+
+	incl := flagIsSet(c, inclSrcDirNameFlag)
+	switch {
+	case len(a.src.fdnames) > 0:
+		// a) csv of files and/or directories (names) from the first arg, e.g. "f1[,f2...]" dst-bucket[/prefix]
+		// b) csv from '--list' flag
+		return verbList(c, &a, a.src.fdnames, a.dst.bck, a.archpath /*append pref*/, incl)
+	case a.pt != nil:
+		// a) range from the first arg, e.g. "/tmp/www/test{0..2}{0..2}.txt" dst-bucket/www.zip
+		// b) from '--template'
+		var trimPrefix string
+		if !incl {
+			trimPrefix = rangeTrimPrefix(a.pt)
+		}
+		return verbRange(c, &a, a.pt, a.dst.bck, trimPrefix, a.archpath, incl)
+	default: // one directory
+		var ndir int
+
+		fobjs, err := lsFobj(c, a.src.arg, "" /*trim pref*/, a.archpath /*append pref*/, &ndir, a.src.recurs, incl)
+		if err != nil {
+			return err
+		}
+		debug.Assert(ndir == 1)
+		return verbFobjs(c, &a, fobjs, a.dst.bck, ndir, a.src.recurs)
+	}
 }
 
-func a2a(c *cli.Context, a *a2args) error {
+func a2aRegular(c *cli.Context, a *archput) error {
 	var (
 		reader   cos.ReadOpenCloser
 		progress *mpb.Progress
 		bars     []*mpb.Bar
-		cksum    *cos.Cksum
 	)
+	if flagIsSet(c, dryRunFlag) {
+		// resulting message printed upon return
+		return nil
+	}
 	fh, err := cos.NewFileHandle(a.src.abspath)
 	if err != nil {
 		return err
@@ -185,16 +274,22 @@ func a2a(c *cli.Context, a *a2args) error {
 		Bck:        a.dst.bck,
 		ObjName:    a.dst.oname,
 		Reader:     reader,
-		Cksum:      cksum,
+		Cksum:      nil,
 		Size:       uint64(a.src.finfo.Size()),
 		SkipVC:     flagIsSet(c, skipVerCksumFlag),
 	}
-	appendArchArgs := api.AppendToArchArgs{
-		PutArgs:       putArgs,
-		ArchPath:      a.archpath,
-		PutIfNotExist: a.putIfNotExist,
+	putApndArchArgs := api.PutApndArchArgs{
+		PutArgs:  putArgs,
+		ArchPath: a.archpath,
 	}
-	err = api.AppendToArch(appendArchArgs)
+	if a.appendOnly {
+		putApndArchArgs.Flags = apc.ArchAppend
+	}
+	if a.appendIf {
+		debug.Assert(!a.appendOnly)
+		putApndArchArgs.Flags = apc.ArchAppendIfExist
+	}
+	err = api.PutApndArch(putApndArchArgs)
 	if progress != nil {
 		progress.Wait()
 	}

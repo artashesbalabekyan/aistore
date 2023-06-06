@@ -23,7 +23,7 @@ type (
 		arg     string
 		abspath string
 		finfo   os.FileInfo
-		fnames  []string
+		fdnames []string // files and directories (names)
 		isdir   bool
 		recurs  bool
 		stdin   bool
@@ -37,27 +37,44 @@ type (
 
 // assorted specific
 type (
+	wop interface {
+		verb() string
+		dest() string
+	}
 	// PUT object(s)
 	putargs struct {
 		src here
 		pt  *cos.ParsedTemplate // client-side, via --list|template or src/range
 		dst there
 	}
-	// PUT arch
-	archargs struct {
+	// 'ais archive bucket'
+	archbck struct {
 		putargs
 		rsrc        there
 		apndIfExist bool
 	}
-	// APPEND to arch
-	a2args struct {
+	// 'ais archive put' (with an option to append)
+	archput struct {
 		putargs
-		archpath      string
-		putIfNotExist bool
+		archpath   string
+		appendOnly bool
+		appendIf   bool
 	}
 )
 
-func (a *putargs) parse(c *cli.Context) (err error) {
+// interface guard
+var (
+	_ wop = (*putargs)(nil)
+	_ wop = (*archbck)(nil)
+	_ wop = (*archput)(nil)
+)
+
+func (*putargs) verb() string { return "PUT" }
+
+func (a *putargs) dest() string       { return a.dst.bck.Cname("") }
+func (a *putargs) srcIsRegular() bool { return a.src.finfo != nil && !a.src.isdir }
+
+func (a *putargs) parse(c *cli.Context, emptyDstOnameOK bool) (err error) {
 	if c.NArg() == 0 {
 		return missingArgumentsError(c, c.Command.ArgsUsage)
 	}
@@ -74,17 +91,17 @@ func (a *putargs) parse(c *cli.Context) (err error) {
 	switch {
 	case c.NArg() == 1: // BUCKET/[OBJECT_NAME] --list|--template
 		uri := c.Args().Get(0) // dst
-		a.dst.bck, a.dst.oname, err = parseBckObjURI(c, uri, true)
+		a.dst.bck, a.dst.oname, err = parseBckObjURI(c, uri, emptyDstOnameOK)
 		if err != nil {
 			return
 		}
 		// src via local filenames
 		if !flagIsSet(c, listFileFlag) && !flagIsSet(c, templateFileFlag) {
-			return missingArgSimple("FILE|DIRECTORY|DIRECTORY/PATTERN")
+			return fmt.Errorf("missing source arg in %q", c.Command.ArgsUsage)
 		}
 		if flagIsSet(c, listFileFlag) {
 			csv := parseStrFlag(c, listFileFlag)
-			a.src.fnames = splitCsv(csv)
+			a.src.fdnames = splitCsv(csv)
 			return
 		}
 		// optional template to select local source(s)
@@ -102,7 +119,7 @@ func (a *putargs) parse(c *cli.Context) (err error) {
 		a.src.arg = c.Args().Get(0) // src
 		uri := c.Args().Get(1)      // dst
 
-		a.dst.bck, a.dst.oname, err = parseBckObjURI(c, uri, true)
+		a.dst.bck, a.dst.oname, err = parseBckObjURI(c, uri, emptyDstOnameOK)
 		if err != nil {
 			return err
 		}
@@ -119,7 +136,7 @@ func (a *putargs) parse(c *cli.Context) (err error) {
 		if a.src.arg == "-" {
 			a.src.stdin = true
 			if a.dst.oname == "" {
-				err = fmt.Errorf("destination object name (in %s) is required when writing directly from standard input",
+				err = fmt.Errorf("missing destination object name (in %s) - required when writing directly from standard input",
 					c.Command.ArgsUsage)
 			}
 			return
@@ -137,8 +154,8 @@ func (a *putargs) parse(c *cli.Context) (err error) {
 		// local file or dir?
 		finfo, errV := os.Stat(a.src.abspath)
 		if errV != nil {
-			// must be a list of files embedded into the first arg
-			a.src.fnames = splitCsv(a.src.arg)
+			// must be a csv list of files embedded with the first arg
+			a.src.fdnames = splitCsv(a.src.arg)
 			return
 		}
 
@@ -146,13 +163,12 @@ func (a *putargs) parse(c *cli.Context) (err error) {
 		// reg file
 		if !finfo.IsDir() {
 			if a.dst.oname == "" {
-				// NOTE [convention]: if objName is not provided
-				// we use the filename as the destination object name
+				// PUT [convention]: use `basename` as the destination object name, unless specified
 				a.dst.oname = filepath.Base(a.src.abspath)
 			}
 			return
 		}
-		// finally: a local (or client-accessible) directory
+		// finally: a local (or rather, client-accessible) directory
 		a.src.isdir = true
 		a.src.recurs = flagIsSet(c, recursFlag)
 		return
@@ -169,8 +185,12 @@ func (a *putargs) parse(c *cli.Context) (err error) {
 	return fmt.Errorf(efmt+"\n%s\n", strings.Join(c.Args()[2:], " "), hint)
 }
 
-func (a *archargs) parse(c *cli.Context) (err error) {
-	err = a.putargs.parse(c)
+func (*archbck) verb() string { return "ARCHIVE" }
+
+func (a *archbck) dest() string { return a.dst.bck.Cname(a.dst.oname) }
+
+func (a *archbck) parse(c *cli.Context) (err error) {
+	err = a.putargs.parse(c, false /*empty dst oname ok*/)
 	if a.dst.bck.IsEmpty() || err == nil /* TODO -- FIXME: archive local file(s) */ {
 		return
 	}
@@ -199,7 +219,11 @@ func (a *archargs) parse(c *cli.Context) (err error) {
 	return
 }
 
-func (a *a2args) parse(c *cli.Context) (err error) {
-	err = a.putargs.parse(c)
+func (*archput) verb() string { return "APPEND" }
+
+func (a *archput) dest() string { return a.dst.bck.Cname(a.dst.oname) }
+
+func (a *archput) parse(c *cli.Context) (err error) {
+	err = a.putargs.parse(c, false /*empty dst oname ok*/)
 	return
 }

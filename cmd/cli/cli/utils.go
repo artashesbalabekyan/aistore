@@ -345,7 +345,7 @@ func makeBckPropPairs(values []string) (nvs cos.StrKVs, err error) {
 		}
 		cmd = values[idx]
 		idx++
-		if cmd == apc.PropBucketAccessAttrs {
+		if cmd == cmn.PropBucketAccessAttrs {
 			access, idx, err = parseBucketAccessValues(values, idx)
 			if err != nil {
 				return nil, err
@@ -448,12 +448,6 @@ func headBucket(bck cmn.Bck, dontAddBckMD bool) (p *cmn.BucketProps, err error) 
 	return
 }
 
-func printDryRunHeader(c *cli.Context) {
-	if flagIsSet(c, dryRunFlag) {
-		fmt.Fprintln(c.App.Writer, dryRunHeader+" "+dryRunExplanation)
-	}
-}
-
 // Prints multiple lines of fmtStr to writer w.
 // For line number i, fmtStr is formatted with values of args at index i
 // if maxLines >= 0 prints at most maxLines, otherwise prints everything until
@@ -515,9 +509,9 @@ func bckPropList(props *cmn.BucketProps, verbose bool) (propList nvpairList) {
 		err := cmn.IterFields(props, func(tag string, field cmn.IterField) (error, bool) {
 			var value string
 			switch tag {
-			case apc.PropBucketCreated:
+			case cmn.PropBucketCreated:
 				value = fmtBucketCreatedTime(props.Created)
-			case apc.PropBucketAccessAttrs:
+			case cmn.PropBucketAccessAttrs:
 				value = props.Access.Describe()
 			default:
 				value = fmt.Sprintf("%v", field.Value())
@@ -825,6 +819,14 @@ func actionCptn(c *cli.Context, prefix, msg string) {
 // (more warning)
 func verboseWarnings() bool {
 	return os.Getenv(env.DEBUG) != "" // anything for now
+}
+
+func dryRunCptn(c *cli.Context) {
+	const (
+		dryRunHeader      = "[DRY RUN]"
+		dryRunExplanation = "with no modifications to the cluster"
+	)
+	fmt.Fprintln(c.App.Writer, fcyan(dryRunHeader)+" "+dryRunExplanation)
 }
 
 //////////////

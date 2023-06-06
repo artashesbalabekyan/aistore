@@ -16,10 +16,12 @@ import (
 	"time"
 
 	"github.com/NVIDIA/aistore/api"
+	"github.com/NVIDIA/aistore/api/apc"
 	"github.com/NVIDIA/aistore/cmd/cli/teb"
 	"github.com/NVIDIA/aistore/cmn"
 	"github.com/NVIDIA/aistore/cmn/atomic"
 	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/NVIDIA/aistore/cmn/debug"
 	"github.com/urfave/cli"
 	"github.com/vbauerster/mpb/v4"
 	"github.com/vbauerster/mpb/v4/decor"
@@ -27,13 +29,15 @@ import (
 
 type (
 	uparams struct {
+		wop       wop
 		bck       cmn.Bck
-		fromTag   string
-		files     []fobj
+		fobjs     []fobj
 		workerCnt int
 		refresh   time.Duration
 		cksum     *cos.Cksum
+		cptn      string
 		totalSize int64
+		dryRun    bool
 	}
 	uctx struct {
 		wg            cos.WG
@@ -52,30 +56,21 @@ type (
 	}
 )
 
-func putFobjs(c *cli.Context, files []fobj, bck cmn.Bck, fromTag string) error {
-	if len(files) == 0 {
-		return fmt.Errorf("no files to PUT (hint: check filename pattern and/or source directory name)")
+func verbFobjs(c *cli.Context, wop wop, fobjs []fobj, bck cmn.Bck, ndir int, recurs bool) error {
+	l := len(fobjs)
+	if l == 0 {
+		return fmt.Errorf("no files to %s (check source name and formatting, see examples)", wop.verb())
 	}
 
-	// calculate total size, group by extension
-	totalSize, extSizes := groupByExt(files)
-	totalCount := int64(len(files))
-
-	if flagIsSet(c, dryRunFlag) {
-		i := 0
-		for ; i < dryRunExamplesCnt; i++ {
-			fmt.Fprintf(c.App.Writer, "PUT %q => %q\n", files[i].path, bck.Cname(files[i].name))
-		}
-		if i < len(files) {
-			fmt.Fprintf(c.App.Writer, "(and %d more)\n", len(files)-i)
-		}
-		return nil
-	}
+	cptn := fmt.Sprintf("%s %d file%s", wop.verb(), l, cos.Plural(l))
+	cptn += ndir2tag(ndir, recurs)
+	cptn += fmt.Sprintf(" => %s", wop.dest())
 
 	var (
-		units, errU = parseUnitsFlag(c, unitsFlag)
-		tmpl        = teb.MultiPutTmpl + strconv.FormatInt(totalCount, 10) + "\t " + cos.ToSizeIEC(totalSize, 2) + "\n"
-		opts        = teb.Opts{AltMap: teb.FuncMapUnits(units)}
+		totalSize, extSizes = groupByExt(fobjs)
+		units, errU         = parseUnitsFlag(c, unitsFlag)
+		tmpl                = teb.MultiPutTmpl + strconv.Itoa(l) + "\t " + cos.ToSizeIEC(totalSize, 2) + "\n"
+		opts                = teb.Opts{AltMap: teb.FuncMapUnits(units)}
 	)
 	if errU != nil {
 		return errU
@@ -91,28 +86,51 @@ func putFobjs(c *cli.Context, files []fobj, bck cmn.Bck, fromTag string) error {
 
 	// ask a user for confirmation
 	if !flagIsSet(c, yesFlag) {
-		l := len(files)
-		if ok := confirm(c, fmt.Sprintf("PUT %d file%s => %s?", l, cos.Plural(l), bck)); !ok {
+		if ok := confirm(c, cptn+"?"); !ok {
 			fmt.Fprintln(c.App.Writer, "Operation canceled")
 			return nil
 		}
 	}
 	refresh := calcPutRefresh(c)
 	numWorkers := parseIntFlag(c, concurrencyFlag)
-	params := &uparams{
+	debug.Assert(numWorkers > 0)
+	uparams := &uparams{
+		wop:       wop,
 		bck:       bck,
-		fromTag:   fromTag,
-		files:     files,
+		fobjs:     fobjs,
 		workerCnt: numWorkers,
 		refresh:   refresh,
 		cksum:     cksum,
+		cptn:      cptn,
 		totalSize: totalSize,
+		dryRun:    flagIsSet(c, dryRunFlag),
 	}
-	return _putFobjs(c, params)
+	return uparams.do(c)
 }
 
-// PUT fobj-s in parallel
-func _putFobjs(c *cli.Context, p *uparams) error {
+func ndir2tag(ndir int, recurs bool) (tag string) {
+	if ndir == 0 {
+		return
+	}
+	if ndir == 1 {
+		tag = " (one directory"
+	} else {
+		tag = fmt.Sprintf(" (%d directories", ndir)
+	}
+	if recurs {
+		tag += ", recursively)"
+	} else {
+		tag += ", non-recursive)"
+	}
+	return
+}
+
+/////////////
+// uparams //
+/////////////
+
+// PUT/APPEND fobj-s in parallel
+func (p *uparams) do(c *cli.Context) error {
 	u := &uctx{
 		verbose:      flagIsSet(c, verboseFlag),
 		showProgress: flagIsSet(c, progressFlag),
@@ -123,7 +141,7 @@ func _putFobjs(c *cli.Context, p *uparams) error {
 	if u.showProgress {
 		var (
 			filesBarArg = barArgs{ // bar[0]
-				total:   int64(len(p.files)),
+				total:   int64(len(p.fobjs)),
 				barText: "Uploaded files:",
 				barType: unitsArg,
 			}
@@ -139,9 +157,9 @@ func _putFobjs(c *cli.Context, p *uparams) error {
 		u.barSize = totalBars[1]
 	}
 
-	for _, f := range p.files {
-		u.wg.Add(1)
-		go u.put(c, p, f)
+	for _, fobj := range p.fobjs {
+		u.wg.Add(1) // cos.NewLimitedWaitGroup
+		go u.run(c, p, fobj)
 	}
 	u.wg.Wait()
 
@@ -150,23 +168,95 @@ func _putFobjs(c *cli.Context, p *uparams) error {
 		fmt.Fprint(c.App.Writer, u.errSb.String())
 	}
 	if numFailed := u.errCount.Load(); numFailed > 0 {
-		return fmt.Errorf("failed to PUT %d object%s", numFailed, cos.Plural(int(numFailed)))
+		return fmt.Errorf("failed to %s %d file%s", p.wop.verb(), numFailed, cos.Plural(int(numFailed)))
 	}
-	msg := fmt.Sprintf("PUT %d object%s%s to %q\n", len(p.files), cos.Plural(len(p.files)), p.fromTag, p.bck.Cname(""))
-	actionDone(c, msg)
+	if !flagIsSet(c, dryRunFlag) {
+		actionDone(c, p.cptn)
+	}
 	return nil
+}
+
+func (p *uparams) _putOne(c *cli.Context, fobj fobj, reader cos.ReadOpenCloser, skipVC bool) (err error) {
+	if p.dryRun {
+		fmt.Fprintf(c.App.Writer, "%s %s -> %s\n", p.wop.verb(), fobj.path, p.bck.Cname(fobj.dstName))
+		return
+	}
+	putArgs := api.PutArgs{
+		BaseParams: apiBP,
+		Bck:        p.bck,
+		ObjName:    fobj.dstName,
+		Reader:     reader,
+		Cksum:      p.cksum,
+		Size:       uint64(fobj.size),
+		SkipVC:     skipVC,
+	}
+	_, err = api.PutObject(putArgs)
+	return
+}
+
+func (p *uparams) _a2aOne(c *cli.Context, fobj fobj, reader cos.ReadOpenCloser, skipVC bool) error {
+	a, ok := p.wop.(*archput)
+	debug.Assert(ok)
+
+	archpath := fobj.dstName // an actual individual `archpath`
+	if p.dryRun {
+		if fobj.path == archpath {
+			fmt.Fprintf(c.App.Writer, "%s %s to %s\n", p.wop.verb(), fobj.path, a.dst.oname)
+		} else {
+			fmt.Fprintf(c.App.Writer, "%s %s to %s as %s\n", p.wop.verb(), fobj.path, a.dst.oname, archpath)
+		}
+		return nil
+	}
+
+	putArgs := api.PutArgs{
+		BaseParams: apiBP,
+		Bck:        p.bck,
+		ObjName:    a.dst.oname, // SHARD_NAME (compare w/ append-prefix for put)
+		Reader:     reader,
+		Cksum:      nil,
+		Size:       uint64(fobj.size),
+		SkipVC:     skipVC,
+	}
+
+	putApndArchArgs := api.PutApndArchArgs{
+		PutArgs:  putArgs,
+		ArchPath: archpath,
+	}
+	if a.appendOnly {
+		putApndArchArgs.Flags = apc.ArchAppend
+	}
+	if a.appendIf {
+		debug.Assert(!a.appendOnly)
+		putApndArchArgs.Flags = apc.ArchAppendIfExist
+	}
+	return api.PutApndArch(putApndArchArgs)
 }
 
 //////////
 // uctx //
 //////////
 
-func (u *uctx) put(c *cli.Context, p *uparams, f fobj) {
-	defer u.fini(c, p, f)
+func (u *uctx) run(c *cli.Context, p *uparams, fobj fobj) {
+	fh, bar, err := u.init(c, fobj)
+	if err == nil {
+		updateBar := func(n int, _ error) {
+			if !u.showProgress {
+				return
+			}
+			u.barSize.IncrBy(n)
+			if bar != nil {
+				bar.IncrBy(n)
+			}
+		}
+		u.do(c, p, fobj, fh, updateBar)
+	}
+	u.fini(c, p, fobj)
+}
 
-	fh, err := cos.NewFileHandle(f.path)
+func (u *uctx) init(c *cli.Context, fobj fobj) (fh *cos.FileHandle, bar *mpb.Bar, err error) {
+	fh, err = cos.NewFileHandle(fobj.path)
 	if err != nil {
-		str := fmt.Sprintf("Failed to open %q: %v\n", f.path, err)
+		str := fmt.Sprintf("Failed to open %q: %v\n", fobj.path, err)
 		if u.showProgress {
 			u.errSb.WriteString(str)
 		} else {
@@ -175,55 +265,49 @@ func (u *uctx) put(c *cli.Context, p *uparams, f fobj) {
 		u.errCount.Inc()
 		return
 	}
-
-	// setup progress bar(s)
-	var (
-		bar       *mpb.Bar
-		updateBar = func(int, error) {} // no-op unless (below)
-	)
-	if u.showProgress {
-		if u.verbose {
-			bar = u.progress.AddBar(
-				f.size,
-				mpb.BarRemoveOnComplete(),
-				mpb.PrependDecorators(
-					decor.Name(f.name+" ", decor.WC{W: len(f.name) + 1, C: decor.DSyncWidthR}),
-					decor.Counters(decor.UnitKiB, "%.1f/%.1f", decor.WCSyncWidth),
-				),
-				mpb.AppendDecorators(decor.Percentage(decor.WCSyncWidth)),
-			)
-			updateBar = func(n int, _ error) {
-				u.barSize.IncrBy(n)
-				bar.IncrBy(n)
-			}
-		} else {
-			updateBar = func(n int, _ error) {
-				u.barSize.IncrBy(n)
-			}
-		}
+	if !u.showProgress || !u.verbose {
+		return
 	}
 
-	var (
-		countReader = cos.NewCallbackReadOpenCloser(fh, updateBar /*progress callback*/)
-		putArgs     = api.PutArgs{
-			BaseParams: apiBP,
-			Bck:        p.bck,
-			ObjName:    f.name,
-			Reader:     countReader,
-			Cksum:      p.cksum,
-			SkipVC:     flagIsSet(c, skipVerCksumFlag),
-		}
+	// setup "verbose" bar
+	bar = u.progress.AddBar(
+		fobj.size,
+		mpb.BarRemoveOnComplete(),
+		mpb.PrependDecorators(
+			decor.Name(fobj.dstName+" ", decor.WC{W: len(fobj.dstName) + 1, C: decor.DSyncWidthR}),
+			decor.Counters(decor.UnitKiB, "%.1f/%.1f", decor.WCSyncWidth),
+		),
+		mpb.AppendDecorators(decor.Percentage(decor.WCSyncWidth)),
 	)
-	if _, err := api.PutObject(putArgs); err != nil {
-		str := fmt.Sprintf("Failed to PUT %s: %v\n", p.bck.Cname(f.name), err)
+	return
+}
+
+func (u *uctx) do(c *cli.Context, p *uparams, fobj fobj, fh *cos.FileHandle, updateBar func(int, error)) {
+	var (
+		err         error
+		skipVC      = flagIsSet(c, skipVerCksumFlag)
+		countReader = cos.NewCallbackReadOpenCloser(fh, updateBar /*progress callback*/)
+	)
+	switch p.wop.verb() {
+	case "PUT":
+		err = p._putOne(c, fobj, countReader, skipVC)
+	case "APPEND":
+		err = p._a2aOne(c, fobj, countReader, skipVC)
+	default:
+		debug.Assert(false, p.wop.verb()) // "ARCHIVE"
+		actionWarn(c, fmt.Sprintf("%q not implemented yet", p.wop.verb()))
+		return
+	}
+	if err != nil {
+		str := fmt.Sprintf("Failed to %s %s: %v\n", p.wop.verb(), p.bck.Cname(fobj.dstName), err)
 		if u.showProgress {
 			u.errSb.WriteString(str)
 		} else {
 			fmt.Fprint(c.App.Writer, str)
 		}
 		u.errCount.Inc()
-	} else if u.verbose && !u.showProgress {
-		fmt.Fprintf(c.App.Writer, "%s -> %s\n", f.path, f.name)
+	} else if u.verbose && !u.showProgress && !p.dryRun {
+		fmt.Fprintf(c.App.Writer, "%s -> %s\n", fobj.path, fobj.dstName) // needed?
 	}
 }
 
@@ -246,7 +330,7 @@ func (u *uctx) fini(c *cli.Context, p *uparams, f fobj) {
 	if !u.showProgress && time.Since(u.lastReport) > u.reportEvery {
 		fmt.Fprintf(
 			c.App.Writer, "Uploaded %d(%d%%) objects, %s (%d%%).\n",
-			total, 100*total/len(p.files), cos.ToSizeIEC(size, 1), 100*size/p.totalSize,
+			total, 100*total/len(p.fobjs), cos.ToSizeIEC(size, 1), 100*size/p.totalSize,
 		)
 		u.lastReport = time.Now()
 	}
@@ -260,6 +344,10 @@ func putRegular(c *cli.Context, bck cmn.Bck, objName, path string, finfo os.File
 		bars     []*mpb.Bar
 		cksum    *cos.Cksum
 	)
+	if flagIsSet(c, dryRunFlag) {
+		// resulting message printed upon return
+		return nil
+	}
 	cksum, err := cksumToCompute(c, bck)
 	if err != nil {
 		return err
