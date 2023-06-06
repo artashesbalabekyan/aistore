@@ -1,0 +1,6 @@
+{
+  "name": "AIStore",
+  "build": {
+      "dockerfile": "Dockerfile"
+  }
+}
