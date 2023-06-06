@@ -2,24 +2,23 @@ module github.com/artashesbalabekyan/aistore/cmd/cli
 
 go 1.20
 
-// direct
 require (
-	github.com/fatih/color v1.14.1
+	github.com/artashesbalabekyan/aistore v1.3.18
+	github.com/fatih/color v1.15.0
 	github.com/json-iterator/go v1.1.12
 	github.com/onsi/ginkgo v1.16.5
-	github.com/onsi/gomega v1.27.6
-	github.com/urfave/cli v1.22.12
+	github.com/onsi/gomega v1.27.7
+	github.com/urfave/cli v1.22.13
 	github.com/vbauerster/mpb/v4 v4.12.2
 	golang.org/x/sync v0.2.0
 	golang.org/x/term v0.8.0
 	gopkg.in/yaml.v2 v2.4.0
-	k8s.io/apimachinery v0.26.1
+	k8s.io/apimachinery v0.27.2
 )
 
-// indirect
 require (
 	github.com/OneOfOne/xxhash v1.2.8 // indirect
-	github.com/VividCortex/ewma v1.2.0 // indirect
+	github.com/VividCortex/ewma v1.1.1 // indirect
 	github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -94,9 +93,4 @@ require (
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
-)
-
-require (
-	github.com/artashesbalabekyan/aistore v1.3.17 // indirect
-	github.com/artashesbalabekyan/aistore v1.3.18-0.20230606151310-2013845261ec // indirect
 )
