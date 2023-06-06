@@ -25,7 +25,7 @@ $ make mod-all
 
 Step 2.
 ```console
-$ make kill clean cli && make deploy <<< '5\n5\n2\ny\ny\nn\nn\n0\n'
+$ make kill clean cli && make deploy <<< $'5\n5\n2\ny\ny\nn\nn\n0\n'
 ```
 
 Wait for run
@@ -52,7 +52,7 @@ $ export AWS_DEFAULT_REGION=<region>
 
 Then run the step 2 command again to rerun the aistore
 ```console
-$ make kill clean cli && make deploy <<< '5\n5\n2\ny\ny\nn\nn\n0\n'
+$ make kill clean cli && make deploy <<< $'5\n5\n2\ny\ny\nn\nn\n0\n'
 ```
 
 Then try to list remote bucket or set the props
