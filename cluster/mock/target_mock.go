@@ -10,11 +10,11 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/fs"
-	"github.com/NVIDIA/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/memsys"
 )
 
 // TargetMock provides cluster.Target interface with mocked return values.

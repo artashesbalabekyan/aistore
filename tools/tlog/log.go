@@ -9,7 +9,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 func prependTime(msg string) string {

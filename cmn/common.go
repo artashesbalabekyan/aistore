@@ -12,11 +12,11 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
-const GitHubHome = "https://github.com/NVIDIA/aistore"
+const GitHubHome = "https://github.com/artashesbalabekyan/aistore"
 
 func init() {
 	GCO = &globalConfigOwner{}

@@ -62,7 +62,7 @@ botocore = ["wrapt"]
 
 [project.urls]
 "Homepage" = "https://aiatscale.org"
-"Download" = "https://github.com/NVIDIA/aistore/tags"
+"Download" = "https://github.com/artashesbalabekyan/aistore/tags"
 "Documentation" = "https://aiatscale.org/docs/"
-"Release notes" = "https://github.com/NVIDIA/aistore/releases/"
-"Source" = "https://github.com/NVIDIA/aistore/"
+"Release notes" = "https://github.com/artashesbalabekyan/aistore/releases/"
+"Source" = "https://github.com/artashesbalabekyan/aistore/"

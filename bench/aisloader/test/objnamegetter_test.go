@@ -11,9 +11,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/NVIDIA/aistore/bench/aisloader/namegetter"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/bench/aisloader/namegetter"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 // Running these benchmarks with different objNamesSize returns different results

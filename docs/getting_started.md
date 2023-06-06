@@ -110,7 +110,7 @@ The steps:
 
 ```console
 $ cd $GOPATH/src/github.com/NVIDIA
-$ git clone https://github.com/NVIDIA/aistore.git
+$ git clone https://github.com/artashesbalabekyan/aistore.git
 $ cd aistore
 # optionally, run `make mod-tidy` to preload dependencies
 $ ./deploy/scripts/clean_deploy.sh

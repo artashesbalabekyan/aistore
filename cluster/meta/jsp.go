@@ -5,8 +5,8 @@
 package meta
 
 import (
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/jsp"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/jsp"
 )
 
 // interface guards

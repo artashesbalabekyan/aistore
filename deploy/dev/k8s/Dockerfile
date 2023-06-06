@@ -6,8 +6,8 @@ ARG providers
 ENV GOPATH="/go"
 ENV PATH="${GOPATH}/bin:${PATH}"
 
-RUN mkdir -p /go/src/github.com/NVIDIA/aistore
-WORKDIR /go/src/github.com/NVIDIA/aistore
+RUN mkdir -p /go/src/github.com/artashesbalabekyan/aistore
+WORKDIR /go/src/github.com/artashesbalabekyan/aistore
 COPY . .
 
 RUN MODE=${mode} AIS_BACKEND_PROVIDERS=${providers:-"aws gcp"} make node

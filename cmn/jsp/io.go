@@ -11,9 +11,9 @@ import (
 	"hash"
 	"io"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
 	"github.com/OneOfOne/xxhash"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/pierrec/lz4/v3"
 )

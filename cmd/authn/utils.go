@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/NVIDIA/aistore/api/authn"
+	"github.com/artashesbalabekyan/aistore/api/authn"
 )
 
 type bckACLList []*authn.BckACL

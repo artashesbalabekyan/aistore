@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/ext/dsort/extract"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/ext/dsort/extract"
 )
 
 const (

@@ -8,9 +8,9 @@ package cli
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
 	"github.com/urfave/cli"
 )
 

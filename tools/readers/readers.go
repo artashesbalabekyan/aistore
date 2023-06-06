@@ -13,12 +13,12 @@ import (
 	"os"
 	"path"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/cmn/mono"
-	"github.com/NVIDIA/aistore/ext/dsort/extract"
-	"github.com/NVIDIA/aistore/memsys"
-	"github.com/NVIDIA/aistore/tools/tarch"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/mono"
+	"github.com/artashesbalabekyan/aistore/ext/dsort/extract"
+	"github.com/artashesbalabekyan/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/tools/tarch"
 )
 
 const (

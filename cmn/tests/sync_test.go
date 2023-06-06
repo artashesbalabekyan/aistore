@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/tools"
 )
 
 func TestTimeoutGroupSmoke(t *testing.T) {

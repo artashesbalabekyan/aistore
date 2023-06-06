@@ -7,9 +7,9 @@ package memsys_test
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/memsys"
-	"github.com/NVIDIA/aistore/tools/cryptorand"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/tools/cryptorand"
 )
 
 // 1. Run with all defaults:

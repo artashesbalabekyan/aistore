@@ -7,8 +7,8 @@ package stats
 import (
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/stats/statsd"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/stats/statsd"
 )
 
 const (

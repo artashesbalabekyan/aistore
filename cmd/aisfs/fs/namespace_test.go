@@ -7,10 +7,10 @@ package fs
 import (
 	"strings"
 
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmd/aisfs/ais"
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmd/aisfs/ais"
+	"github.com/artashesbalabekyan/aistore/cmn"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

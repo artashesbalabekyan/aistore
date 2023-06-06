@@ -2,7 +2,7 @@ This folder is a loose collection of scripts used for development and production
 
 ## github_release.sh
 
-Given a release tag, add *release assets* to an existing (and tagged) github release at [AIStore releases](https://github.com/NVIDIA/aistore/releases).
+Given a release tag, add *release assets* to an existing (and tagged) github release at [AIStore releases](https://github.com/artashesbalabekyan/aistore/releases).
 
 Currently, this will build and [upload](https://github.com/actions/upload-release-asset) **ais**, **aisfs**, and **aisloader** binaries along with their respective sha256 checksums.
 

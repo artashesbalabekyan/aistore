@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
 )
 
 type DiskStat struct {

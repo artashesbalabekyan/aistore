@@ -8,9 +8,9 @@ package cli
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 	"github.com/vbauerster/mpb/v4"
 	"github.com/vbauerster/mpb/v4/decor"
 )

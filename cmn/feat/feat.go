@@ -8,7 +8,7 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 type Flags cos.BitFlags

@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn"
 )
 
 type (

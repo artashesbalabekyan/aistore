@@ -10,8 +10,8 @@ import (
 	"path"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmd/aisfs/ais"
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmd/aisfs/ais"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 	"github.com/jacobsa/fuse"
 	"github.com/jacobsa/fuse/fuseops"
 	"github.com/jacobsa/fuse/fuseutil"

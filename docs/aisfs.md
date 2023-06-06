@@ -96,7 +96,7 @@ fusermount version: 2.9.7
 To install `aisfs` on your system, execute the following commands:
 
 ```console
-$ cd $GOPATH/src/github.com/NVIDIA/aistore
+$ cd $GOPATH/src/github.com/artashesbalabekyan/aistore
 $ make aisfs
 ```
 
@@ -119,7 +119,7 @@ To quickly set up and try `aisfs` on your local machine, first
 deploy an AIStore cluster (for more info see AIStore [README](/README.md)):
 
 ```console
-$ cd $GOPATH/src/github.com/NVIDIA/aistore
+$ cd $GOPATH/src/github.com/artashesbalabekyan/aistore
 $ make deploy
 ```
 

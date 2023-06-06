@@ -39,6 +39,6 @@ RUN go install github.com/rakyll/gotest@latest
 ARG cld_provider=0
 ENV CLD_PROVIDER ${cld_provider}
 
-COPY . $GOPATH/src/github.com/NVIDIA/aistore/
+COPY . $GOPATH/src/github.com/artashesbalabekyan/aistore/
 
-ENTRYPOINT [ "sh", "-c", "$GOPATH/src/github.com/NVIDIA/aistore/deploy/test-in-docker/entrypoint.sh" ]
+ENTRYPOINT [ "sh", "-c", "$GOPATH/src/github.com/artashesbalabekyan/aistore/deploy/test-in-docker/entrypoint.sh" ]

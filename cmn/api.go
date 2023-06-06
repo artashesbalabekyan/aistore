@@ -12,9 +12,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 // BucketProps - manageable, user-configurable, and inheritable (from cluster config).
@@ -136,7 +136,7 @@ type (
 // * By default, LRU is disabled for AIS (`ais://`) buckets.
 //
 // See also:
-//   - github.com/NVIDIA/aistore/blob/master/docs/bucket.md#default-bucket-properties
+//   - github.com/artashesbalabekyan/aistore/blob/master/docs/bucket.md#default-bucket-properties
 //   - BucketPropsToUpdate (above)
 //   - ais.defaultBckProps()
 func (bck *Bck) DefaultProps(c *ClusterConfig) *BucketProps {

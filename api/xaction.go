@@ -12,13 +12,13 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/cmn/mono"
-	"github.com/NVIDIA/aistore/nl"
-	"github.com/NVIDIA/aistore/xact"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/mono"
+	"github.com/artashesbalabekyan/aistore/nl"
+	"github.com/artashesbalabekyan/aistore/xact"
 )
 
 // Start xaction

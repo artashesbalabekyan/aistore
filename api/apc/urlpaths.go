@@ -4,7 +4,7 @@
  */
 package apc
 
-import "github.com/NVIDIA/aistore/cmn/cos"
+import "github.com/artashesbalabekyan/aistore/cmn/cos"
 
 // RESTful URL path: l1/l2/l3
 const (

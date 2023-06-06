@@ -8,7 +8,7 @@ package cmn
 import (
 	"syscall"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 func (args *TransportArgs) setSockOpt(_, _ string, c syscall.RawConn) (err error) {

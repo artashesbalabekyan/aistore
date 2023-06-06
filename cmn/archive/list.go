@@ -13,8 +13,8 @@ import (
 	"os"
 	"sort"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 	"github.com/pierrec/lz4/v3"
 )
 

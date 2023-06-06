@@ -60,7 +60,7 @@ Also note that `ais put` command with its `--archive` option provides an alterna
 
 For the most recently updated list of supported archival formats, please see:
 
-* [this source](https://github.com/NVIDIA/aistore/blob/master/cmn/cos/archive.go).
+* [this source](https://github.com/artashesbalabekyan/aistore/blob/master/cmn/cos/archive.go).
 
 ### Examples
 
@@ -183,7 +183,7 @@ shard-2.tar                                      5.50KiB
 # Note that --archpath can specify fully qualified name of the destination
 
 $ ais archive put LICENSE ais://nnn/shard-2.tar --archpath shard-2.tar/license.test
-APPEND "/go/src/github.com/NVIDIA/aistore/LICENSE" to "ais://nnn/shard-2.tar[/shard-2.tar/license.test]"
+APPEND "/go/src/github.com/artashesbalabekyan/aistore/LICENSE" to "ais://nnn/shard-2.tar[/shard-2.tar/license.test]"
 
 # contents _after_:
 $ ais archive ls ais://nnn/shard-2.tar

@@ -7,9 +7,9 @@ package tests
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 func TestParseBckObjectURI(t *testing.T) {

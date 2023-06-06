@@ -13,7 +13,7 @@ https://www.server-world.info/en/note?os=Ubuntu_14.04&p=ssh&f=8
 #### Download 
 
 ```console
-$ git clone git://github.com/NVIDIA/aistore
+$ git clone git://github.com/artashesbalabekyan/aistore
 $ git checkout ais_ansible
 ```
 

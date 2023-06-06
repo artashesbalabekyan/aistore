@@ -7,11 +7,11 @@ package integration
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/tools"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 // health should respond with 200 even is node is unregistered

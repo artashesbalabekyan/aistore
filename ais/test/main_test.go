@@ -12,13 +12,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/api/env"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/tools"
-	"github.com/NVIDIA/aistore/tools/tlog"
-	"github.com/NVIDIA/aistore/tools/trand"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/api/env"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/tools/tlog"
+	"github.com/artashesbalabekyan/aistore/tools/trand"
 )
 
 var (

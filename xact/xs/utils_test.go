@@ -7,10 +7,10 @@ package xs_test
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/tools/tassert"
-	"github.com/NVIDIA/aistore/tools/trand"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/tools/trand"
 )
 
 func TestConcatObjLists(t *testing.T) {

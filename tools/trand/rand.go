@@ -7,7 +7,7 @@ package trand
 import (
 	"math/rand"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 func String(n int) string {

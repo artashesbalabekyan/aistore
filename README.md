@@ -1,7 +1,7 @@
 **AIStore is a lightweight object storage system with the capability to linearly scale out with each added storage node and a special focus on petascale deep learning.**
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Go Report Card](https://goreportcard.com/badge/github.com/NVIDIA/aistore)
+![Go Report Card](https://goreportcard.com/badge/github.com/artashesbalabekyan/aistore)
 
 AIStore (AIS for short) is a built from scratch, lightweight storage stack tailored for AI apps. It's an elastic cluster that can grow and shrink at runtime and can be ad-hoc deployed, with or without Kubernetes, anywhere from a single Linux machine to a bare-metal cluster of any size.
 
@@ -27,11 +27,11 @@ AIS consistently shows balanced I/O distribution and **linear scalability** acro
 AIS runs natively on Kubernetes and features open format - thus, the freedom to copy or move your data from AIS at any time using the familiar Linux `tar(1)`, `scp(1)`, `rsync(1)` and similar.
 
 For developers and data scientists, there's also:
-* native [Go (language) API](https://github.com/NVIDIA/aistore/tree/master/api) that we utilize in a variety of tools including [CLI](/docs/cli.md) and [Load Generator](/docs/aisloader.md);
-* native [Python SDK](https://github.com/NVIDIA/aistore/tree/master/python/aistore/sdk)
+* native [Go (language) API](https://github.com/artashesbalabekyan/aistore/tree/master/api) that we utilize in a variety of tools including [CLI](/docs/cli.md) and [Load Generator](/docs/aisloader.md);
+* native [Python SDK](https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore/sdk)
   - [Python SDK reference guide](/docs/python_sdk.md)
-* [PyTorch integration](https://github.com/NVIDIA/aistore/tree/master/python/aistore/pytorch) and usage examples
-* [Boto3 support](https://github.com/NVIDIA/aistore/tree/master/python/aistore/botocore_patch) for interoperability with AWS SDK for Python (aka [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)) client
+* [PyTorch integration](https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore/pytorch) and usage examples
+* [Boto3 support](https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore/botocore_patch) for interoperability with AWS SDK for Python (aka [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)) client
   - and other [Botocore](https://github.com/boto/botocorehttps://github.com/boto/botocore) derivatives.
 
 For the original AIStore **white paper** and design philosophy, for introduction to large-scale deep learning and the most recently added features, please see [AIStore Overview](/docs/overview.md) (where you can also find six alternative ways to work with existing datasets). Videos and **animated presentations** can be found at [videos](/docs/videos.md).
@@ -48,12 +48,12 @@ Since prerequisites boil down to, essentially, having Linux with a disk the depl
 
 | Option | Objective |
 | --- | ---|
-| [Local playground](https://github.com/NVIDIA/aistore/blob/master/docs/getting_started.md#local-playground) | AIS developers and development, Linux or Mac OS |
+| [Local playground](https://github.com/artashesbalabekyan/aistore/blob/master/docs/getting_started.md#local-playground) | AIS developers and development, Linux or Mac OS |
 | Minimal production-ready deployment | This option utilizes preinstalled docker image and is targeting first-time users or researchers (who could immediately start training their models on smaller datasets) |
-| [Easy automated GCP/GKE deployment](https://github.com/NVIDIA/aistore/blob/master/docs/getting_started.md#kubernetes-deployments) | Developers, first-time users, AI researchers |
+| [Easy automated GCP/GKE deployment](https://github.com/artashesbalabekyan/aistore/blob/master/docs/getting_started.md#kubernetes-deployments) | Developers, first-time users, AI researchers |
 | [Large-scale production deployment](https://github.com/NVIDIA/ais-k8s) | Requires Kubernetes and is provided via a separate repository: [ais-k8s](https://github.com/NVIDIA/ais-k8s) |
 
-Further, there's the capability referred to as [global namespace](https://github.com/NVIDIA/aistore/blob/master/docs/providers.md#remote-ais-cluster): given HTTP(S) connectivity, AIS clusters can be easily interconnected to "see" each other's datasets. Hence, the idea to start "small" to gradually and incrementally build high-performance shared capacity.
+Further, there's the capability referred to as [global namespace](https://github.com/artashesbalabekyan/aistore/blob/master/docs/providers.md#remote-ais-cluster): given HTTP(S) connectivity, AIS clusters can be easily interconnected to "see" each other's datasets. Hence, the idea to start "small" to gradually and incrementally build high-performance shared capacity.
 
 > For detailed discussion on supported deployments, please refer to [Getting Started](/docs/getting_started.md).
 
@@ -67,7 +67,7 @@ Generally, AIStore (cluster) requires at least some sort of [deployment](/deploy
 $ ./deploy/scripts/install_from_binaries.sh --help
 ```
 
-The script installs [aisloader](/docs/aisloader.md) and [CLI](/docs/cli.md) from the most recent, or the previous, GitHub [release](https://github.com/NVIDIA/aistore/releases). For CLI, it'll also enable auto-completions (which is strongly recommended).
+The script installs [aisloader](/docs/aisloader.md) and [CLI](/docs/cli.md) from the most recent, or the previous, GitHub [release](https://github.com/artashesbalabekyan/aistore/releases). For CLI, it'll also enable auto-completions (which is strongly recommended).
 
 ## PyTorch integration
 
@@ -96,8 +96,8 @@ With a little effort, they all could be extracted and used outside.
 - [Getting Started](/docs/getting_started.md)
 - [Technical Blog](https://aiatscale.org/blog)
 - API and SDK
-  - [Go (language) API](https://github.com/NVIDIA/aistore/tree/master/api)
-  - [Python SDK](https://github.com/NVIDIA/aistore/tree/master/python/aistore), and also:
+  - [Go (language) API](https://github.com/artashesbalabekyan/aistore/tree/master/api)
+  - [Python SDK](https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore), and also:
     - [pip package](https://pypi.org/project/aistore/)
     - [reference guide](/docs/python_sdk.md)
   - [REST API](/docs/http_api.md)
@@ -105,10 +105,10 @@ With a little effort, they all could be extracted and used outside.
 - Amazon S3
   - [`s3cmd` client](/docs/s3cmd.md)
   - [S3 compatibility](/docs/s3compat.md)
-  - [Boto3 support](https://github.com/NVIDIA/aistore/tree/master/python/aistore/botocore_patch)
+  - [Boto3 support](https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore/botocore_patch)
 - [CLI](/docs/cli.md)
   - [`ais help`](/docs/cli/help.md)
-  - [Reference guide](https://github.com/NVIDIA/aistore/blob/master/docs/cli.md#cli-reference)
+  - [Reference guide](https://github.com/artashesbalabekyan/aistore/blob/master/docs/cli.md#cli-reference)
   - [Monitoring](/docs/cli/show.md)
     - [`ais show cluster`](/docs/cli/show.md)
     - [`ais show performance`](/docs/cli/show.md)
@@ -174,7 +174,7 @@ With a little effort, they all could be extracted and used outside.
   - [Highly available control plane](/docs/ha.md)
   - [Downloader](/docs/downloader.md)
   - [On-disk layout](/docs/on_disk_layout.md)
-  - [AIS Buckets: definition, operations, properties](https://github.com/NVIDIA/aistore/blob/master/docs/bucket.md#bucket)
+  - [AIS Buckets: definition, operations, properties](https://github.com/artashesbalabekyan/aistore/blob/master/docs/bucket.md#bucket)
 
 ## License
 

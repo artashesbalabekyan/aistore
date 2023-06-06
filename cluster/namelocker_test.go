@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/tools/tassert"
-	"github.com/NVIDIA/aistore/tools/trand"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/tools/trand"
 )
 
 func TestUpgradeLock(t *testing.T) {

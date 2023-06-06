@@ -4,7 +4,7 @@
  */
 package dsort
 
-import "github.com/NVIDIA/aistore/ext/dsort/extract"
+import "github.com/artashesbalabekyan/aistore/ext/dsort/extract"
 
 //
 // NOTE: changes in this source MAY require re-running `msgp` code generation - see docs/msgp.md for details.

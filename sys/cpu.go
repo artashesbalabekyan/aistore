@@ -8,7 +8,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
 )
 
 const maxProcsEnvVar = "GOMAXPROCS"

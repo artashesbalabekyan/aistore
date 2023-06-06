@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NVIDIA/aistore/api/env"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/api/env"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/tools"
 	. "github.com/onsi/ginkgo"
 	"github.com/onsi/ginkgo/config"
 	. "github.com/onsi/ginkgo/extensions/table"

@@ -8,9 +8,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/tools"
 )
 
 func TestRandomReaderPutStress(t *testing.T) {

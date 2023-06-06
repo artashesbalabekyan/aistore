@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 func LoadAppConfig(configDir, configFname string, v any) (err error) {

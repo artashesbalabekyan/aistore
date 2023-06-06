@@ -11,14 +11,14 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/NVIDIA/aistore/ais"
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/reb"
-	"github.com/NVIDIA/aistore/tools"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/ais"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/reb"
+	"github.com/artashesbalabekyan/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 	jsoniter "github.com/json-iterator/go"
 )
 

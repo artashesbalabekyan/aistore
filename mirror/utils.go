@@ -7,9 +7,9 @@ package mirror
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/fs"
 )
 
 func delCopies(lom *cluster.LOM, copies int) (size int64, err error) {

@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/jsp"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/jsp"
 )
 
 type (

@@ -56,12 +56,12 @@ COPY limits.conf /etc/security/limits.conf
 
 RUN mkdir -p $GOPATH/src/github.com/NVIDIA && \
     cd $GOPATH/src/github.com/NVIDIA && \
-    git clone https://github.com/NVIDIA/aistore.git && \
-    cd ${GOPATH}/src/github.com/NVIDIA/aistore && \
+    git clone https://github.com/artashesbalabekyan/aistore.git && \
+    cd ${GOPATH}/src/github.com/artashesbalabekyan/aistore && \
     AIS_BACKEND_PROVIDERS="ais aws azure gcp hdfs" make node
 
 
-WORKDIR "${GOPATH}/src/github.com/NVIDIA/aistore"
+WORKDIR "${GOPATH}/src/github.com/artashesbalabekyan/aistore"
 
 EXPOSE 51080 9080 10080
 

@@ -5,7 +5,7 @@
  */
 package cmn
 
-import "github.com/NVIDIA/aistore/3rdparty/glog"
+import "github.com/artashesbalabekyan/aistore/3rdparty/glog"
 
 var loghdr string
 

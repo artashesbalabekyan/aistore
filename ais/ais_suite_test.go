@@ -8,9 +8,9 @@ package ais_test
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/hk"
-	"github.com/NVIDIA/aistore/tools"
-	"github.com/NVIDIA/aistore/xact/xreg"
+	"github.com/artashesbalabekyan/aistore/hk"
+	"github.com/artashesbalabekyan/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/xact/xreg"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

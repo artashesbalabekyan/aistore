@@ -7,14 +7,14 @@ package dload_test
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/ext/dload"
-	"github.com/NVIDIA/aistore/fs"
-	"github.com/NVIDIA/aistore/tools"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/ext/dload"
+	"github.com/artashesbalabekyan/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 func TestNormalizeObjName(t *testing.T) {

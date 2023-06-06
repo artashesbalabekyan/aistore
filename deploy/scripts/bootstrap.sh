@@ -116,7 +116,7 @@ test-env)
     exit 0
   fi
 
-  echo "AIStore is not running, this causes some tests to fail! (to run, see: https://github.com/NVIDIA/aistore#local-non-containerized)" >&2
+  echo "AIStore is not running, this causes some tests to fail! (to run, see: https://github.com/artashesbalabekyan/aistore#local-non-containerized)" >&2
   echo -n "continue? [y/N] " >&2 && read ans && [[ ${ans:-N} =~ ^y(es)?$ ]]
   exit $?
   ;;

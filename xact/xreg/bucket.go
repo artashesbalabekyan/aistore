@@ -5,12 +5,12 @@
 package xreg
 
 import (
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/xact"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/xact"
 )
 
 type (

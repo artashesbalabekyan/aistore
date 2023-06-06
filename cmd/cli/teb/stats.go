@@ -7,7 +7,7 @@ package teb
 import (
 	"sort"
 
-	"github.com/NVIDIA/aistore/stats"
+	"github.com/artashesbalabekyan/aistore/stats"
 )
 
 type StstMap map[string]*stats.NodeStatus // by node ID (SID)

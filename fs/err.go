@@ -7,7 +7,7 @@ package fs
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn"
 )
 
 const (

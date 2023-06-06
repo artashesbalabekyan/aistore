@@ -2,8 +2,6 @@ module github.com/artashesbalabekyan/aistore
 
 go 1.20
 
-replace github.com/NVIDIA/aistore => github.com/artashesbalabekyan/aistore v1.3.17
-
 // Direct dependencies
 require (
 	cloud.google.com/go/storage v1.30.1

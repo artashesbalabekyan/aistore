@@ -73,8 +73,8 @@ For background and further references, see:
 
 ## Recently Added
 
-- [v3.16](https://github.com/NVIDIA/aistore/releases/tag/v1.3.16)
-- [v3.12](https://github.com/NVIDIA/aistore/releases/tag/v1.3.15)
+- [v3.16](https://github.com/artashesbalabekyan/aistore/releases/tag/v1.3.16)
+- [v3.12](https://github.com/artashesbalabekyan/aistore/releases/tag/v1.3.15)
 
 ## Design Philosophy
 

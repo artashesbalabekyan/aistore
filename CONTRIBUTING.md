@@ -146,7 +146,7 @@ git rebase -i HEAD~<# of commits to squash>
 
 ## Raise an Issue 
 
-If a bug requires more attention, raise an issue [here](https://github.com/NVIDIA/aistore/issues). We will try to respond to the issue as soon as possible.
+If a bug requires more attention, raise an issue [here](https://github.com/artashesbalabekyan/aistore/issues). We will try to respond to the issue as soon as possible.
 
 Please give the issue an appropriate title and include detailed information on the issue at hand.
 

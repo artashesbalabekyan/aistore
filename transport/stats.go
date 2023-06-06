@@ -6,8 +6,8 @@
 package transport
 
 import (
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 const (

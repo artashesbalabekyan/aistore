@@ -11,12 +11,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/fname"
-	"github.com/NVIDIA/aistore/cmn/jsp"
-	"github.com/NVIDIA/aistore/ext/etl"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/fname"
+	"github.com/artashesbalabekyan/aistore/cmn/jsp"
+	"github.com/artashesbalabekyan/aistore/ext/etl"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

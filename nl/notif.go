@@ -7,10 +7,10 @@ package nl
 import (
 	"time"
 
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/mono"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/mono"
 )
 
 type (

@@ -8,7 +8,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 	jsoniter "github.com/json-iterator/go"
 )
 

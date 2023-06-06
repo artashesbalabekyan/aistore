@@ -9,10 +9,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/ext/dsort/extract"
-	"github.com/NVIDIA/aistore/sys"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/ext/dsort/extract"
+	"github.com/artashesbalabekyan/aistore/sys"
 )
 
 const (

@@ -113,7 +113,7 @@ def etl():
 
 We will use `python3` (`python:3.10`) *runtime* and install the `torchvision` package to run the `etl` function above. When using the Python SDK `init_code`, it will automatically select the current version of Python (if supported) as the runtime for compatibility with the code passed in. To use a different runtime, check out the `init_spec` option.
 
-> [runtime](https://github.com/NVIDIA/ais-etl/tree/master/runtime) contains a predefined work environment in which the provided code/script will be run. A full list of supported runtimes can be found [here](https://github.com/NVIDIA/aistore/blob/master/docs/etl.md#runtimes).
+> [runtime](https://github.com/NVIDIA/ais-etl/tree/master/runtime) contains a predefined work environment in which the provided code/script will be run. A full list of supported runtimes can be found [here](https://github.com/artashesbalabekyan/aistore/blob/master/docs/etl.md#runtimes).
 
 
 ```python
@@ -139,7 +139,7 @@ show_etl(image_etl)
 
 ## Inline and Offline ETL
 
-AIS supports both inline (applied when getting objects) and offline (bucket to bucket) ETL. For more info see the [ETL docs here](https://github.com/NVIDIA/aistore/blob/master/docs/etl.md).
+AIS supports both inline (applied when getting objects) and offline (bucket to bucket) ETL. For more info see the [ETL docs here](https://github.com/artashesbalabekyan/aistore/blob/master/docs/etl.md).
 
 ## Transforming a single object inline
 
@@ -212,13 +212,13 @@ Full code examples for each action above can be found [here](/examples/transform
 
 1. [AIStore & ETL: Introduction](https://aiatscale.org/blog/2021/10/21/ais-etl-1)
 2. GitHub:
-    - [AIStore](https://github.com/NVIDIA/aistore)
+    - [AIStore](https://github.com/artashesbalabekyan/aistore)
     - [Local Kubernetes Deployment](https://gitlab-master.nvidia.com/aistorage/aistore/-/blob/master/deploy/dev/k8s/README.md)
     - [AIS/Kubernetes Operator, AIS on bare-metal, Deployment Playbooks, Helm](https://github.com/NVIDIA/ais-k8s)
     - [AIS-ETL containers and specs](https://github.com/NVIDIA/ais-etl)
 3. Documentation, blogs, videos:
     - https://aiatscale.org
-    - https://github.com/NVIDIA/aistore/tree/master/docs
+    - https://github.com/artashesbalabekyan/aistore/tree/master/docs
 4. Deprecated training code samples:
     - [ImageNet PyTorch training with `aistore.pytorch.Dataset`](/examples/etl-imagenet-dataset/train_aistore.py)
 5. Full code example

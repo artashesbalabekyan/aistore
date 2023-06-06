@@ -8,8 +8,8 @@ package memsys
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/sys"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/sys"
 )
 
 // memory _pressure_

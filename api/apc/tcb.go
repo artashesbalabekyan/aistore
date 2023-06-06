@@ -8,7 +8,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 // copy & (offline) transform bucket to bucket

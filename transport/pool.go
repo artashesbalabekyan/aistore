@@ -9,7 +9,7 @@ import (
 	"io"
 	"sync"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 //////////////

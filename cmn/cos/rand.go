@@ -9,8 +9,8 @@ import (
 	"encoding/binary"
 	"math/rand"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/cmn/mono"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/mono"
 )
 
 const (

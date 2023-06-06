@@ -7,7 +7,7 @@
 package filetype
 
 import (
-	"github.com/NVIDIA/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/fs"
 )
 
 const (

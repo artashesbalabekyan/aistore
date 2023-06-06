@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 const ticks = 100 // C.sysconf(C._SC_CLK_TCK)

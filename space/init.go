@@ -7,8 +7,8 @@
 package space
 
 import (
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/xact/xreg"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/xact/xreg"
 )
 
 var verbose bool

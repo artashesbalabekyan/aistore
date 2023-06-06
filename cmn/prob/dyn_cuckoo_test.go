@@ -9,8 +9,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn/prob"
-	"github.com/NVIDIA/aistore/tools/trand"
+	"github.com/artashesbalabekyan/aistore/cmn/prob"
+	"github.com/artashesbalabekyan/aistore/tools/trand"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

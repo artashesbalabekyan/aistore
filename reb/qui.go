@@ -7,7 +7,7 @@ package reb
 import (
 	"time"
 
-	"github.com/NVIDIA/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster"
 )
 
 type quiArgs struct {

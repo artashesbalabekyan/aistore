@@ -91,8 +91,8 @@ We can simply do it with:
 $ make cli
 Building ais (CLI)...
 *** To enable autocompletions in your current shell, run:
-*** source /Users/virrages/go/src/github.com/NVIDIA/aistore/cmd/cli/autocomplete/bash or
-*** source /Users/virrages/go/src/github.com/NVIDIA/aistore/cmd/cli/autocomplete/zsh
+*** source /Users/virrages/go/src/github.com/artashesbalabekyan/aistore/cmd/cli/autocomplete/bash or
+*** source /Users/virrages/go/src/github.com/artashesbalabekyan/aistore/cmd/cli/autocomplete/zsh
 ```
 
 And we are ready to play with HDFS backend.

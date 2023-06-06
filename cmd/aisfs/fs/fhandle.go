@@ -9,8 +9,8 @@ import (
 	"io"
 	"sync"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/memsys"
 	"github.com/jacobsa/fuse/fuseops"
 )
 

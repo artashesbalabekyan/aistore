@@ -11,18 +11,18 @@ import (
 	"os"
 	"time"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/ais/backend"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/fs"
-	"github.com/NVIDIA/aistore/memsys"
-	"github.com/NVIDIA/aistore/stats"
-	"github.com/NVIDIA/aistore/xact/xreg"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/ais/backend"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/stats"
+	"github.com/artashesbalabekyan/aistore/xact/xreg"
 )
 
 // interface guard
@@ -254,7 +254,7 @@ func (t *target) _promLocal(params *cluster.PromoteParams, lom *cluster.LOM) (fi
 	if params.DeleteSrc {
 		// To use `params.SrcFQN` as `workFQN`, make sure both are
 		// located on the same filesystem. About "filesystem sharing" see also:
-		// * https://github.com/NVIDIA/aistore/blob/master/docs/overview.md#terminology
+		// * https://github.com/artashesbalabekyan/aistore/blob/master/docs/overview.md#terminology
 		mi, _, err := fs.FQN2Mpath(params.SrcFQN)
 		extraCopy = err != nil || !mi.FS.Equal(lom.Mountpath().FS)
 	}

@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 func TestAbortedErrorAs(t *testing.T) {

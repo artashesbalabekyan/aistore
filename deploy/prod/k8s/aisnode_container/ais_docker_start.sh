@@ -112,9 +112,9 @@ do
     elif [[ -e /go/bin/aisnode ]]; then
         # debug/source image with a built binary, use that
         /go/bin/aisnode $ARGS
-    elif [[ -d /go/src/github.com/NVIDIA/aistore/ais ]]; then
+    elif [[ -d /go/src/github.com/artashesbalabekyan/aistore/ais ]]; then
         # if running from source tree then add flags to assist the debugger
-        (cd /go/src/github.com/NVIDIA/aistore/ais && go run -gcflags="all=-N -l" setup/aisnode.go $ARGS)
+        (cd /go/src/github.com/artashesbalabekyan/aistore/ais && go run -gcflags="all=-N -l" setup/aisnode.go $ARGS)
     else
         echo "Cannot find an ais binary or source tree"
     exit 2

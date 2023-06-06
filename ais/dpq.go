@@ -10,8 +10,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/NVIDIA/aistore/ais/s3"
-	"github.com/NVIDIA/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/ais/s3"
+	"github.com/artashesbalabekyan/aistore/api/apc"
 )
 
 // RESTful API parse context

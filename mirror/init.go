@@ -5,8 +5,8 @@
 package mirror
 
 import (
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/xact/xreg"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/xact/xreg"
 )
 
 func Init() {

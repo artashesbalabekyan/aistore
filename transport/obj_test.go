@@ -33,17 +33,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NVIDIA/aistore/3rdparty/golang/mux"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/mono"
-	"github.com/NVIDIA/aistore/memsys"
-	"github.com/NVIDIA/aistore/tools"
-	"github.com/NVIDIA/aistore/tools/tassert"
-	"github.com/NVIDIA/aistore/tools/tlog"
-	"github.com/NVIDIA/aistore/transport"
+	"github.com/artashesbalabekyan/aistore/3rdparty/golang/mux"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/mono"
+	"github.com/artashesbalabekyan/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/tools/tlog"
+	"github.com/artashesbalabekyan/aistore/transport"
 )
 
 const (

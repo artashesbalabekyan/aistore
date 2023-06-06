@@ -51,7 +51,7 @@ Performs cleanup and then deploys a new instance of an AIS cluster.
 To make it even more convenient, consider setting up an alias:
 
 ```bash
-alias cais="bash ${GOPATH}/src/github.com/NVIDIA/aistore/deploy/scripts/clean-deploy --aws --gcp"
+alias cais="bash ${GOPATH}/src/github.com/artashesbalabekyan/aistore/deploy/scripts/clean-deploy --aws --gcp"
 ```
 
 #### Example: minimal remote cluster

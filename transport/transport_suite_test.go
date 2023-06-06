@@ -6,7 +6,7 @@
 package transport_test
 
 import (
-	"github.com/NVIDIA/aistore/hk"
+	"github.com/artashesbalabekyan/aistore/hk"
 )
 
 func init() { hk.TestInit() }

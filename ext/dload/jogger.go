@@ -7,9 +7,9 @@ package dload
 import (
 	"sync"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 const queueChSize = 1000

@@ -5,9 +5,9 @@
 package xreg
 
 import (
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
 )
 
 func RenewPutArchive(uuid string, t cluster.Target, bckFrom, bckTo *meta.Bck) RenewRes {

@@ -13,13 +13,13 @@ import (
 	"os"
 	"time"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/nl"
-	"github.com/NVIDIA/aistore/stats"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/nl"
+	"github.com/artashesbalabekyan/aistore/stats"
 )
 
 const (

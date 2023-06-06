@@ -7,7 +7,7 @@ package cos
 import (
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 type Bits uint8

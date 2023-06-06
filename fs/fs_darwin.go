@@ -9,7 +9,7 @@ import (
 	"os"
 	"syscall"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 func makeFsInfo(mpath string) (fsInfo cos.FS, err error) {

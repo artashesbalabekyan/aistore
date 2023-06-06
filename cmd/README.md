@@ -78,7 +78,7 @@ builds AIS CLI from the local aistore repository and installs it in your $GOPATH
 Alternatively, you could also use `go install`:
 
 ```console
-$ go install github.com/NVIDIA/aistore/cmd/cli@latest` && mv $GOPATH/bin/cli $GOPATH/bin/ais
+$ go install github.com/artashesbalabekyan/aistore/cmd/cli@latest` && mv $GOPATH/bin/cli $GOPATH/bin/ais
 ```
 
 To install CLI auto-completions, you could also, and separately, use `cmd/cli/install_autocompletions.sh`
@@ -94,7 +94,7 @@ $ make aisloader
 But again, you could also use `go install`:
 
 ```console
-$ go install github.com/NVIDIA/aistore/cmd/aisloader@latest
+$ go install github.com/artashesbalabekyan/aistore/cmd/aisloader@latest
 ```
 
 ## xmeta

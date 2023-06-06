@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/tools/docker"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/tools/docker"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 type SkipTestArgs struct {

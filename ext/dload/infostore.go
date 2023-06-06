@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/cmn/kvdb"
-	"github.com/NVIDIA/aistore/hk"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/kvdb"
+	"github.com/artashesbalabekyan/aistore/hk"
 )
 
 var (

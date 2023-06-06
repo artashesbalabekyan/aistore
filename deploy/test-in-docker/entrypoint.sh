@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BUCKET=docker_local_bucket
-AISTORE_PATH=$GOPATH/src/github.com/NVIDIA/aistore
+AISTORE_PATH=$GOPATH/src/github.com/artashesbalabekyan/aistore
 
 if [ ${CLD_PROVIDER} == 1 ]; then
     BUCKET=${HOSTNAME}

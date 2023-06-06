@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/memsys"
 )
 
 // 1. Run with all defaults:

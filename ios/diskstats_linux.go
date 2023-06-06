@@ -11,9 +11,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 // The "sectors" in question are the standard UNIX 512-byte sectors, not any device- or filesystem-specific block size

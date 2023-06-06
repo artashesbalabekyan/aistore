@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/cmn/kvdb"
-	"github.com/NVIDIA/aistore/hk"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/cmn/kvdb"
+	"github.com/artashesbalabekyan/aistore/hk"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/pkg/errors"
 )

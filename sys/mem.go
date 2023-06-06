@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 // Memory stats for the host OS or for container, depending on where the app is running.

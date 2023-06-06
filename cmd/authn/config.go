@@ -7,9 +7,9 @@ package main
 import (
 	"net/http"
 
-	"github.com/NVIDIA/aistore/api/authn"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/jsp"
+	"github.com/artashesbalabekyan/aistore/api/authn"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/jsp"
 	jsoniter "github.com/json-iterator/go"
 )
 

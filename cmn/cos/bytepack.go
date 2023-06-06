@@ -8,7 +8,7 @@ import (
 	"encoding/binary"
 	"errors"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 // The module provides a way to encode/decode data as a compact binary slice.

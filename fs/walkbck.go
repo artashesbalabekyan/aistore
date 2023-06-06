@@ -8,8 +8,8 @@ import (
 	"container/heap"
 	"context"
 
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 	"golang.org/x/sync/errgroup"
 )
 

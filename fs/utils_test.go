@@ -9,9 +9,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/NVIDIA/aistore/fs"
-	"github.com/NVIDIA/aistore/tools"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 func TestIsDirEmpty(t *testing.T) {

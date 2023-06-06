@@ -11,10 +11,10 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/NVIDIA/aistore/cmd/aisfs/ais"
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
 	"github.com/OneOfOne/xxhash"
+	"github.com/artashesbalabekyan/aistore/cmd/aisfs/ais"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 	"github.com/jacobsa/fuse/fuseops"
 	"github.com/jacobsa/fuse/fuseutil"
 )

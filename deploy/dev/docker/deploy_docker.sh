@@ -382,9 +382,9 @@ if [ "$FS_LIST" != "" ] && [ "$TEST_FSPATH_COUNT" -eq 0 ]; then
     AIS_FS_PATHS=${AIS_FS_PATHS#","}
 fi
 
-composer_file="${GOPATH}/src/github.com/NVIDIA/aistore/deploy/dev/docker/docker-compose.singlenet.yml"
+composer_file="${GOPATH}/src/github.com/artashesbalabekyan/aistore/deploy/dev/docker/docker-compose.singlenet.yml"
 if [ "${NETWORK}" = "multi" ]; then
-    composer_file="${GOPATH}/src/github.com/NVIDIA/aistore/deploy/dev/docker/docker-compose.singlenet.yml -f ${GOPATH}/src/github.com/NVIDIA/aistore/deploy/dev/docker/docker-compose.multinet.yml"
+    composer_file="${GOPATH}/src/github.com/artashesbalabekyan/aistore/deploy/dev/docker/docker-compose.singlenet.yml -f ${GOPATH}/src/github.com/artashesbalabekyan/aistore/deploy/dev/docker/docker-compose.multinet.yml"
 fi
 
 cp $DIR/../local/aisnode_config.sh aisnode_config.sh

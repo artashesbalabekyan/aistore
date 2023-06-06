@@ -9,8 +9,8 @@ import (
 	"os/user"
 	"path/filepath"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/cmn/fname"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/fname"
 )
 
 func HomeDir() (string, error) {

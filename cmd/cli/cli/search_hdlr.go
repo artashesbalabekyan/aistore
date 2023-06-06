@@ -11,8 +11,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/NVIDIA/aistore/cmd/cli/teb"
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmd/cli/teb"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 	"github.com/urfave/cli"
 )
 

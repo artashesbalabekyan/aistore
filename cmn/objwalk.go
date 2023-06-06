@@ -9,8 +9,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 type LsoEntries []*LsoEntry // separately from (code-generated) objlist* - no need to msgpack

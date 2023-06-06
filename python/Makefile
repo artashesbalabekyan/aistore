@@ -15,7 +15,7 @@ redirect_from:
 
 AIStore Python SDK is a growing set of client-side objects and methods to access and utilize AIS clusters.
 
-> For PyTorch integration and usage examples, please refer to [AIS Python SDK](https://pypi.org/project/aistore) available via Python Package Index (PyPI), or see [https://github.com/NVIDIA/aistore/tree/master/python/aistore](https://github.com/NVIDIA/aistore/tree/master/python/aistore).
+> For PyTorch integration and usage examples, please refer to [AIS Python SDK](https://pypi.org/project/aistore) available via Python Package Index (PyPI), or see [https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore](https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore).
 
 endef
 export PREFIX

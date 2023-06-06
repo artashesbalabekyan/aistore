@@ -7,7 +7,7 @@ package cos
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
 )
 
 const assertMsg = "assertion failed"

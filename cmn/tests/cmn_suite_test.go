@@ -7,7 +7,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/tools"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

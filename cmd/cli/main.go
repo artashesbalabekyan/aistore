@@ -9,8 +9,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/NVIDIA/aistore/cmd/cli/cli"
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmd/cli/cli"
+	"github.com/artashesbalabekyan/aistore/cmn"
 )
 
 var (

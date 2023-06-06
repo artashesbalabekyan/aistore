@@ -5,7 +5,7 @@
 package ais
 
 import (
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

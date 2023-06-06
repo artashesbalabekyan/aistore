@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/NVIDIA/aistore/stats/statsd"
+	"github.com/artashesbalabekyan/aistore/stats/statsd"
 )
 
 var (

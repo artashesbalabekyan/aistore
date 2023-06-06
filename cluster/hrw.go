@@ -7,13 +7,13 @@ package cluster
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/xoshiro256"
-	"github.com/NVIDIA/aistore/fs"
 	"github.com/OneOfOne/xxhash"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/xoshiro256"
+	"github.com/artashesbalabekyan/aistore/fs"
 )
 
 // A variant of consistent hash based on rendezvous algorithm by Thaler and Ravishankar,

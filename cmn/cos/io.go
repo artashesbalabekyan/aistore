@@ -15,8 +15,8 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 const ContentLengthUnknown = -1

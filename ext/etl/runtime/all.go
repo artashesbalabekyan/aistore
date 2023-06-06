@@ -8,7 +8,7 @@ import (
 	_ "embed"
 	"strings"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 const (

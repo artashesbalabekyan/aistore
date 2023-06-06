@@ -22,7 +22,7 @@ RUN mv ./kubectl /usr/local/bin/kubectl
 RUN kubectl version --client
 
 # Cache all dependencies and install the linter.
-RUN git clone --depth=1 https://github.com/NVIDIA/aistore.git && cd aistore && \
+RUN git clone --depth=1 https://github.com/artashesbalabekyan/aistore.git && cd aistore && \
 go mod download && \
 cd cmd/cli && go mod download && cd ../.. && \
 cd cmd/aisfs && go mod download && cd ../.. && \

@@ -8,7 +8,7 @@ package cmn
 import (
 	"strconv"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 // Object Write Transaction (OWT) is used to control some of the aspects of creating

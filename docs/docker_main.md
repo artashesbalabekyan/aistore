@@ -129,13 +129,13 @@ The steps:
 1. Build `aisnode`.
 
 ```console
-$ go install github.com/NVIDIA/aistore/cmd/aisnode@latest
+$ go install github.com/artashesbalabekyan/aistore/cmd/aisnode@latest
 ```
 
 2. To get all sources and use scripts, you can clone AIStore repo.
 
 ```console
-$ git clone https://github.com/NVIDIA/aistore.git
+$ git clone https://github.com/artashesbalabekyan/aistore.git
 ```
 
 3. Optionally, setup AWS configuration by running [`aws configure`](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) command.

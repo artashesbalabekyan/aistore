@@ -4,7 +4,7 @@
  */
 package cluster
 
-import "github.com/NVIDIA/aistore/cluster/meta"
+import "github.com/artashesbalabekyan/aistore/cluster/meta"
 
 const (
 	Targets = iota // 0 (cluster.Targets) used as default value for NewStreamBundle

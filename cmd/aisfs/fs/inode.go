@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
 	"github.com/jacobsa/fuse/fuseops"
 )
 

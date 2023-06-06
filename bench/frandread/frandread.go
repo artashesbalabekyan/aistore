@@ -20,7 +20,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/mono"
+	"github.com/artashesbalabekyan/aistore/cmn/mono"
 )
 
 type (

@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/NVIDIA/aistore/tools"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/tools"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 func TestInvalidHTTPMethod(t *testing.T) {

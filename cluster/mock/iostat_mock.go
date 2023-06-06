@@ -5,7 +5,7 @@
 package mock
 
 import (
-	"github.com/NVIDIA/aistore/ios"
+	"github.com/artashesbalabekyan/aistore/ios"
 )
 
 // interface guard

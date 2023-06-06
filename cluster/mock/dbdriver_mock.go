@@ -9,8 +9,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/kvdb"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/kvdb"
 	jsoniter "github.com/json-iterator/go"
 )
 

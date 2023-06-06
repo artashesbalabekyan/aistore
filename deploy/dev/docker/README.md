@@ -241,8 +241,8 @@ $ docker system prune -f
 Add the following to the end of your `~/.profile`:
 
 ```bash
-if [ -d "$GOPATH/src/github.com/NVIDIA/aistore/deploy/dev/docker" ] ; then
-  PATH="$PATH:$GOPATH/src/github.com/NVIDIA/aistore/deploy/dev/docker"
+if [ -d "$GOPATH/src/github.com/artashesbalabekyan/aistore/deploy/dev/docker" ] ; then
+  PATH="$PATH:$GOPATH/src/github.com/artashesbalabekyan/aistore/deploy/dev/docker"
 fi
 ```
 

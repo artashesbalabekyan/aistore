@@ -4,7 +4,7 @@
  */
 package cluster
 
-import "github.com/NVIDIA/aistore/cluster/meta"
+import "github.com/artashesbalabekyan/aistore/cluster/meta"
 
 type (
 	RemAis struct {

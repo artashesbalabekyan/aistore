@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/NVIDIA/aistore/bench/aisloader"
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/bench/aisloader"
+	"github.com/artashesbalabekyan/aistore/cmn"
 )
 
 var (

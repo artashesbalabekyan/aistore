@@ -10,10 +10,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/fs"
-	"github.com/NVIDIA/aistore/stats"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/stats"
 )
 
 const (

@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
 )
 
 type QuiRes int

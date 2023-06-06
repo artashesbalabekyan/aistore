@@ -8,7 +8,7 @@ package hk_test
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/hk"
+	"github.com/artashesbalabekyan/aistore/hk"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

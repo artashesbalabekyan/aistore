@@ -7,7 +7,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn"
 )
 
 func checkRESTItems(w http.ResponseWriter, r *http.Request, itemsAfter int, items []string) ([]string, error) {

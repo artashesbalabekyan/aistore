@@ -13,17 +13,17 @@ redirect_from:
 - [In-depth overview](/docs/overview.md)
 - [Getting started](/docs/getting_started.md)
 - [CLI: overview, getting started](/docs/cli.md)
-- [CLI: reference guide](https://github.com/NVIDIA/aistore/blob/master/docs/cli.md#cli-reference)
+- [CLI: reference guide](https://github.com/artashesbalabekyan/aistore/blob/master/docs/cli.md#cli-reference)
 - [Blogs](https://aiatscale.org/blog)
-- [Deployment](https://github.com/NVIDIA/aistore/tree/master/deploy)
+- [Deployment](https://github.com/artashesbalabekyan/aistore/tree/master/deploy)
 
 ### Guides and References
 
 - [Getting Started](/docs/getting_started.md)
 - [Technical Blog](https://aiatscale.org/blog)
 - API and SDK
-  - [Go (language) API](https://github.com/NVIDIA/aistore/tree/master/api)
-  - [Python SDK](https://github.com/NVIDIA/aistore/tree/master/python/aistore), and also:
+  - [Go (language) API](https://github.com/artashesbalabekyan/aistore/tree/master/api)
+  - [Python SDK](https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore), and also:
     - [pip package](https://pypi.org/project/aistore/)
     - [reference guide](/docs/python_sdk.md)
   - [REST API](/docs/http_api.md)
@@ -31,7 +31,7 @@ redirect_from:
 - Amazon S3
   - [`s3cmd` client](/docs/s3cmd.md)
   - [S3 compatibility](/docs/s3compat.md)
-  - [Boto3 support](https://github.com/NVIDIA/aistore/tree/master/python/aistore/botocore_patch)
+  - [Boto3 support](https://github.com/artashesbalabekyan/aistore/tree/master/python/aistore/botocore_patch)
 - [CLI](/docs/cli.md)
   - [`ais help`](/docs/cli/help.md)
   - [Monitoring](/docs/cli/show.md)
@@ -102,4 +102,4 @@ redirect_from:
   - [File access (experimental)](/docs/aisfs.md)
   - [Downloader](/docs/downloader.md)
   - [On-disk layout](/docs/on_disk_layout.md)
-  - [AIS Buckets: definition, operations, properties](https://github.com/NVIDIA/aistore/blob/master/docs/bucket.md#bucket)
+  - [AIS Buckets: definition, operations, properties](https://github.com/artashesbalabekyan/aistore/blob/master/docs/bucket.md#bucket)

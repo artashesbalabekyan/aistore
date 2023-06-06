@@ -13,11 +13,11 @@ ENV AIS_BACKEND_PROVIDERS=${providers:-"aws gcp"}
 RUN apt-get update -yq
 RUN apt-get --no-install-recommends -y install curl git coreutils
 
-RUN mkdir -p /go/src/github.com/NVIDIA/aistore
-WORKDIR /go/src/github.com/NVIDIA/aistore
+RUN mkdir -p /go/src/github.com/artashesbalabekyan/aistore
+WORKDIR /go/src/github.com/artashesbalabekyan/aistore
 
 # Clone GitHub and build aisnode
-RUN git clone https://github.com/NVIDIA/aistore.git && cd aistore && go mod tidy &&\
+RUN git clone https://github.com/artashesbalabekyan/aistore.git && cd aistore && go mod tidy &&\
  GOOS="linux" GOARCH="amd64" CGO_ENABLED=0 BUILD_FLAGS="-a -installsuffix cgo" MODE=${mode} make node
 
 FROM alpine:latest

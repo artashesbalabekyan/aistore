@@ -9,16 +9,16 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/fs"
-	"github.com/NVIDIA/aistore/fs/mpather"
-	"github.com/NVIDIA/aistore/xact"
-	"github.com/NVIDIA/aistore/xact/xreg"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/fs/mpather"
+	"github.com/artashesbalabekyan/aistore/xact"
+	"github.com/artashesbalabekyan/aistore/xact/xreg"
 )
 
 // XactDirPromote copies a bucket locally within the same cluster

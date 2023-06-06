@@ -9,8 +9,8 @@ sudo sh -c 'cat << EOF > /etc/profile.d/aispaths.sh
 export GOBIN=$HOME/ais/bin
 export GOPATH=$HOME/ais
 export PATH=$PATH:/usr/local/go/bin:$GOBIN
-export AISSRC=$HOME/ais/src/github.com/NVIDIA/aistore/ais
-export AISTORE_SRC=$HOME/ais/src/github.com/NVIDIA/aistore
+export AISSRC=$HOME/ais/src/github.com/artashesbalabekyan/aistore/ais
+export AISTORE_SRC=$HOME/ais/src/github.com/artashesbalabekyan/aistore
 EOF'
 
 sudo chmod 777 /etc/profile.d/aispaths.sh
@@ -40,7 +40,7 @@ fi
 GIT_NVIDIA=${GOPATH}/src/github.com/NVIDIA
 mkdir -p "${GIT_NVIDIA}"
 cd "${GIT_NVIDIA}"
-git clone https://github.com/NVIDIA/aistore.git
+git clone https://github.com/artashesbalabekyan/aistore.git
 
 echo "Backend provider(s) set to: ${AIS_BACKEND_PROVIDERS}"
 cd aistore && make node

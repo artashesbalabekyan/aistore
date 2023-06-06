@@ -7,9 +7,9 @@ package main
 import (
 	"os"
 
-	"github.com/NVIDIA/aistore/ais"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/ais"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 var (

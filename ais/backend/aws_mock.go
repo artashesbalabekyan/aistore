@@ -7,8 +7,8 @@
 package backend
 
 import (
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster"
 )
 
 func NewAWS(_ cluster.TargetPut) (cluster.BackendProvider, error) {

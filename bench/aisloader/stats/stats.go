@@ -8,7 +8,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 // HTTPReq is used for keeping track of http requests stats including number of ops, latency, throughput, etc.

@@ -5,8 +5,8 @@
 package cluster
 
 import (
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/fs"
 )
 
 func ResolveFQN(fqn string) (parsedFQN fs.ParsedFQN, hrwFQN string, err error) {

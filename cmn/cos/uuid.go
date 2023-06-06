@@ -7,7 +7,7 @@ package cos
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
 	"github.com/teris-io/shortid"
 )
 

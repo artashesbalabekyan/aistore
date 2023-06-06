@@ -3,8 +3,8 @@ cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMT
 code.cloudfoundry.org/bytefmt v0.0.0-20190710193110-1eb035ffe2b6/go.mod h1:wN/zk7mhREp/oviagqUXY3EwuHhWyOvAdsn5Y4CzOrc=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/toml v1.2.1/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
-github.com/NVIDIA/aistore v1.3.18-0.20230603175017-0e3a0bf163fb h1:jij2BRVJBhNrjY6Ni5BYg61GgozBGSoewG8JNhDXGR8=
-github.com/NVIDIA/aistore v1.3.18-0.20230603175017-0e3a0bf163fb/go.mod h1:tZvUalPk4wL/+5+5psJkZRHBqu3i2KV9g97HYyHvwc4=
+github.com/artashesbalabekyan/aistore v1.3.18-0.20230603175017-0e3a0bf163fb h1:jij2BRVJBhNrjY6Ni5BYg61GgozBGSoewG8JNhDXGR8=
+github.com/artashesbalabekyan/aistore v1.3.18-0.20230603175017-0e3a0bf163fb/go.mod h1:tZvUalPk4wL/+5+5psJkZRHBqu3i2KV9g97HYyHvwc4=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/OneOfOne/xxhash v1.2.8 h1:31czK/TI9sNkxIKfaUfGlU47BAxQ0ztGgd9vPyqimf8=
 github.com/OneOfOne/xxhash v1.2.8/go.mod h1:eZbhyaAYD41SGSSsnmcpxVoRiQ/MPUTjUdIIOT9Um7Q=
@@ -18,6 +18,8 @@ github.com/andybalholm/brotli v1.0.5/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHG
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/artashesbalabekyan/aistore v1.3.17 h1:9LlIPU8PuJtBEWz4562IAN+oFf6WJ/2Al3mf+98PXFo=
 github.com/artashesbalabekyan/aistore v1.3.17/go.mod h1:m/ELR2jRcMtg8g5wPwE+PLV2lp/Y1hOLvN/tjda3qI8=
+github.com/artashesbalabekyan/aistore v1.3.18-0.20230606151310-2013845261ec h1:2pVsvL5BnvG+JLtFP0I8CI+rfSMcSsdnSAmvCH7R3jo=
+github.com/artashesbalabekyan/aistore v1.3.18-0.20230606151310-2013845261ec/go.mod h1:FL023jEvNciTfcBguC8sUY5AhtIGmemej6nl1SK3MEg=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
 github.com/buger/jsonparser v1.1.1/go.mod h1:6RYKKt7H4d4+iWqouImQ9R2FZql3VbhNgx27UK13J/0=

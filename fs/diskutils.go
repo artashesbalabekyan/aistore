@@ -4,7 +4,7 @@
  */
 package fs
 
-import "github.com/NVIDIA/aistore/ios"
+import "github.com/artashesbalabekyan/aistore/ios"
 
 func GetTotalDisksSize() (uint64, error) {
 	var (

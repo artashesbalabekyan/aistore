@@ -2,11 +2,8 @@ module github.com/artashesbalabekyan/aistore/cmd/cli
 
 go 1.20
 
-replace github.com/NVIDIA/aistore => github.com/artashesbalabekyan/aistore v1.3.17
-
 // direct
 require (
-	github.com/NVIDIA/aistore v1.3.18-0.20230603175017-0e3a0bf163fb
 	github.com/fatih/color v1.14.1
 	github.com/json-iterator/go v1.1.12
 	github.com/onsi/ginkgo v1.16.5
@@ -97,4 +94,9 @@ require (
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
+)
+
+require (
+	github.com/artashesbalabekyan/aistore v1.3.17 // indirect
+	github.com/artashesbalabekyan/aistore v1.3.18-0.20230606151310-2013845261ec // indirect
 )

@@ -48,14 +48,14 @@ The Docker image used to deploy AIS clusters in this guide is `aistorage/cluster
 
 ### <ins>CLI
 
-The easiest might be to clone https://github.com/NVIDIA/aistore, `cd aistore`, and `make cli`.
+The easiest might be to clone https://github.com/artashesbalabekyan/aistore, `cd aistore`, and `make cli`.
 
-Or, you can also download the latest released CLI binary from the [release assets](https://github.com/NVIDIA/aistore/releases).
+Or, you can also download the latest released CLI binary from the [release assets](https://github.com/artashesbalabekyan/aistore/releases).
 
 Further references:
 
 * [AIS CLI](/docs/cli.md)
-* [CLI Documentation](https://github.com/NVIDIA/aistore/tree/master/docs/cli)
+* [CLI Documentation](https://github.com/artashesbalabekyan/aistore/tree/master/docs/cli)
 
 ## How to Build
 

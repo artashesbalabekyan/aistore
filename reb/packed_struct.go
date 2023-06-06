@@ -7,8 +7,8 @@ package reb
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/ec"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/ec"
 )
 
 // Rebalance message types (for ACK or sending files)

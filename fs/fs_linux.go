@@ -11,7 +11,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 // fqn2FsInfo is used only at startup to store file systems for each mountpath.

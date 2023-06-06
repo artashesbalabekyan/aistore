@@ -16,18 +16,18 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/cmn/fname"
-	"github.com/NVIDIA/aistore/cmn/jsp"
-	"github.com/NVIDIA/aistore/fs"
-	"github.com/NVIDIA/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/fname"
+	"github.com/artashesbalabekyan/aistore/cmn/jsp"
+	"github.com/artashesbalabekyan/aistore/fs"
+	"github.com/artashesbalabekyan/aistore/memsys"
 )
 
 // NOTE: to access bucket metadata and related structures, external
@@ -497,7 +497,7 @@ func remoteBckProps(args bckPropsArgs) (props *cmn.BucketProps, err error) {
 // Used to initialize "local" bucket, in particular when there's a remote one
 // (compare with `remoteBckProps` above)
 // See also:
-//   - github.com/NVIDIA/aistore/blob/master/docs/bucket.md#default-bucket-properties
+//   - github.com/artashesbalabekyan/aistore/blob/master/docs/bucket.md#default-bucket-properties
 //   - cmn.BucketPropsToUpdate
 //   - cmn.Bck.DefaultProps
 func defaultBckProps(args bckPropsArgs) (props *cmn.BucketProps) {

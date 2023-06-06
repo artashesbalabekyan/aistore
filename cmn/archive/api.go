@@ -8,7 +8,7 @@ package archive
 import (
 	"errors"
 
-	"github.com/NVIDIA/aistore/cmn/feat"
+	"github.com/artashesbalabekyan/aistore/cmn/feat"
 )
 
 const TarBlockSize = 512 // Size of each block in a tar stream

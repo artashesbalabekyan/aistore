@@ -13,9 +13,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/memsys"
-	"github.com/NVIDIA/aistore/tools/readers"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/tools/readers"
 )
 
 func doPut(wo *workOrder) {

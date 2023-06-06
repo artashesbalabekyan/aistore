@@ -10,9 +10,9 @@ import (
 	"path"
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/mono"
-	"github.com/NVIDIA/aistore/ios"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/mono"
+	"github.com/artashesbalabekyan/aistore/ios"
 )
 
 func TestGetFSUsedPercentage(t *testing.T) {

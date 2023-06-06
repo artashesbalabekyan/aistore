@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
 	"github.com/OneOfOne/xxhash"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 const nlpTryDefault = time.Second // nlp.TryLock default duration

@@ -11,10 +11,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/memsys"
-	"github.com/NVIDIA/aistore/tools/readers"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/tools/readers"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 const mmName = "readers_test"

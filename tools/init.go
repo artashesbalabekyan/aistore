@@ -14,14 +14,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/api/authn"
-	"github.com/NVIDIA/aistore/api/env"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/tools/docker"
-	"github.com/NVIDIA/aistore/tools/tlog"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/api/authn"
+	"github.com/artashesbalabekyan/aistore/api/env"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/tools/docker"
+	"github.com/artashesbalabekyan/aistore/tools/tlog"
 )
 
 const (

@@ -9,8 +9,8 @@ import (
 	"path"
 	"sync"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/cmn/kvdb"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/cmn/kvdb"
 )
 
 const (

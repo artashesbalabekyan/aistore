@@ -7,7 +7,7 @@ package cluster
 import (
 	"sync"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 )
 
 var (

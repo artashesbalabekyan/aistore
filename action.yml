@@ -35,7 +35,7 @@ runs:
       shell: bash
       run: |
         export GOPATH="$(go env GOPATH)"
-        git clone https://github.com/NVIDIA/aistore.git
+        git clone https://github.com/artashesbalabekyan/aistore.git
         cd aistore
         ./deploy/scripts/clean_deploy.sh --target-cnt ${{ inputs.targets }} --proxy-cnt ${{ inputs.proxies }} --mountpath-cnt ${{ inputs.mountpaths }}
         make cli

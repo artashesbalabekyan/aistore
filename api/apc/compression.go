@@ -5,7 +5,7 @@
 package apc
 
 import (
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 // NOTE:

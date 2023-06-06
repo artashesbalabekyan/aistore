@@ -15,8 +15,8 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"github.com/NVIDIA/aistore/cmd/aisfs/fs"
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmd/aisfs/fs"
+	"github.com/artashesbalabekyan/aistore/cmn"
 	"github.com/jacobsa/daemonize"
 	"github.com/jacobsa/fuse"
 	"github.com/urfave/cli"

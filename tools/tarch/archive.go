@@ -16,10 +16,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn/archive"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/ext/dsort/extract"
-	"github.com/NVIDIA/aistore/tools/cryptorand"
+	"github.com/artashesbalabekyan/aistore/cmn/archive"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/ext/dsort/extract"
+	"github.com/artashesbalabekyan/aistore/tools/cryptorand"
 	"github.com/pierrec/lz4/v3"
 )
 

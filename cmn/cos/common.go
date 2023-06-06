@@ -15,8 +15,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 	jsoniter "github.com/json-iterator/go"
 )
 

@@ -7,8 +7,8 @@ package extract
 import (
 	"io"
 
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 // interface guard

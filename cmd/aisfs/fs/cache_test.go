@@ -7,8 +7,8 @@ package fs
 import (
 	"net/http"
 
-	"github.com/NVIDIA/aistore/api"
-	"github.com/NVIDIA/aistore/cmd/aisfs/ais"
+	"github.com/artashesbalabekyan/aistore/api"
+	"github.com/artashesbalabekyan/aistore/cmd/aisfs/ais"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"

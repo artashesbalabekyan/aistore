@@ -7,8 +7,8 @@ package tests
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/tools/tassert"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/tools/tassert"
 )
 
 func TestWordsDistance(t *testing.T) {

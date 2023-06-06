@@ -7,7 +7,7 @@ package dsort
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn"
 )
 
 func newDSortAbortedError(managerUUID string) *cmn.ErrAborted {

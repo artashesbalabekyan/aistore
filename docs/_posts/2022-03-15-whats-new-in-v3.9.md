@@ -6,12 +6,12 @@ author: Alex Aizman
 categories: aistore
 ---
 
-AIS **v3.9** is substantial [productization and performance-improving release](https://github.com/NVIDIA/aistore/releases/tag/3.9). Much of the codebase has been refactored for consistency, with micro-optimization and stabilization fixes across the board.
+AIS **v3.9** is substantial [productization and performance-improving release](https://github.com/artashesbalabekyan/aistore/releases/tag/3.9). Much of the codebase has been refactored for consistency, with micro-optimization and stabilization fixes across the board.
 
 ## Highlights
 
 * [promote](/docs/overview.md#promote-local-or-shared-files): redefine to handle remote file shares; collaborate when promoting via entire cluster; add usability options; productize;
-* [xmeta](https://github.com/NVIDIA/aistore/blob/master/cmd/xmeta/README.md): extend to also dump in a human-readable format: a) erasure-coded metadata and b) object metadata;
+* [xmeta](https://github.com/artashesbalabekyan/aistore/blob/master/cmd/xmeta/README.md): extend to also dump in a human-readable format: a) erasure-coded metadata and b) object metadata;
 * memory usage and fragmentation: consistently use mem-pooling (via `sync.Pool`) for all control structures in the datapath;
 * optimistic concurrency when running batch `prefetch` jobs; refactor and productize;
 * optimize PUT datapath;

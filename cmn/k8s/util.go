@@ -10,7 +10,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
 	v1 "k8s.io/api/core/v1"
 )
 

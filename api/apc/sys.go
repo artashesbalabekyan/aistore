@@ -7,8 +7,8 @@ package apc
 import (
 	"os"
 
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/sys"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/sys"
 )
 
 type MemCPUInfo struct {

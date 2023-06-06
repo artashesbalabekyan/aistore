@@ -7,7 +7,7 @@ package cos_test
 import (
 	"fmt"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

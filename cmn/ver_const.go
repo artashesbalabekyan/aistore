@@ -5,7 +5,7 @@
  */
 package cmn
 
-import "github.com/NVIDIA/aistore/cmn/jsp"
+import "github.com/artashesbalabekyan/aistore/cmn/jsp"
 
 // ========================== IMPORTANT NOTE ==============================
 //

@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn"
 )
 
 func TestMatchRESTItems(t *testing.T) {

@@ -11,16 +11,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/cmn/k8s"
-	"github.com/NVIDIA/aistore/ext/etl/runtime"
-	"github.com/NVIDIA/aistore/xact/xreg"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/k8s"
+	"github.com/artashesbalabekyan/aistore/ext/etl/runtime"
+	"github.com/artashesbalabekyan/aistore/xact/xreg"
 	corev1 "k8s.io/api/core/v1"
 	k8sErrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/util/wait"
@@ -59,7 +59,7 @@ const (
 // 1. User initiates a custom ETL workload by executing one of the documented APIs
 //    and providing either the corresponding docker image or a *transforming function* -
 //    a piece of code that we further run using one of the pre-built `runtimes`
-//    (see https://github.com/NVIDIA/aistore/blob/master/docs/etl.md).
+//    (see https://github.com/artashesbalabekyan/aistore/blob/master/docs/etl.md).
 // 2. The API call results in deploying multiple ETL containers (K8s pods)
 //    simultaneously: one container per storage target.
 // 3. Each target creates a local `Communicator` instance that is based on the specified

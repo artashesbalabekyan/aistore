@@ -13,10 +13,10 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
 	jsoniter "github.com/json-iterator/go"
 )
 
@@ -217,7 +217,7 @@ func GetBucketSummary(bp BaseParams, qbck cmn.QueryBcks, msg *apc.BsummCtrlMsg) 
 // optionally, specific non-default properties (via cmn.BucketPropsToUpdate).
 //
 // See also:
-//   - github.com/NVIDIA/aistore/blob/master/docs/bucket.md#default-bucket-properties
+//   - github.com/artashesbalabekyan/aistore/blob/master/docs/bucket.md#default-bucket-properties
 //   - cmn.BucketPropsToUpdate (cmn/api.go)
 //
 // Bucket properties can be also changed at any time via SetBucketProps (above).

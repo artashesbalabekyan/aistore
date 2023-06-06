@@ -6,8 +6,8 @@
 package hrw
 
 import (
-	"github.com/NVIDIA/aistore/cmn/xoshiro256"
 	"github.com/OneOfOne/xxhash"
+	"github.com/artashesbalabekyan/aistore/cmn/xoshiro256"
 )
 
 const xxHashSeed = 1103515245

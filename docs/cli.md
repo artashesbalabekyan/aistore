@@ -31,7 +31,7 @@ $ make cli-autocompletions	# 2. install CLI autocompletions (Bash and/or Zsh)
 
 Alternatively, install directly from GitHub:
 
-* [Install CLI from release binaries](https://github.com/NVIDIA/aistore/blob/master/deploy/scripts/install_from_binaries.sh)
+* [Install CLI from release binaries](https://github.com/artashesbalabekyan/aistore/blob/master/deploy/scripts/install_from_binaries.sh)
 
 For example, the following command extracts CLI binary to the specified destination and, secondly, installs `bash` autocompletions:
 
@@ -43,7 +43,7 @@ For more usage options, run: `./deploy/scripts/install_from_binaries.sh --help`
 
 You can also install `bash` and/or `zsh` autocompletions separately at any (later) time:
 
-* [Install CLI autocompletions](https://github.com/NVIDIA/aistore/blob/master/cmd/cli/install_autocompletions.sh)
+* [Install CLI autocompletions](https://github.com/artashesbalabekyan/aistore/blob/master/cmd/cli/install_autocompletions.sh)
 
 To uninstall autocompletions, follow the `install_autocompletions.sh` generated prompts, or simply run `bash autocomplete/uninstall.sh`.
 
@@ -57,7 +57,7 @@ Once installed, you should be able to start by running ais `<TAB-TAB>`, selectin
 
 See also:
 
-* [cmd/cli/README.md](https://github.com/NVIDIA/aistore/blob/master/cmd/cli/README.md)
+* [cmd/cli/README.md](https://github.com/artashesbalabekyan/aistore/blob/master/cmd/cli/README.md)
 
 > The rest of the README assumes that user's `PATH` environment variable contains `$GOPATH/bin` directory.
 > Run `export PATH=$PATH:$GOPATH/bin` if this is not the case.
@@ -97,7 +97,7 @@ Notice:
 * CLI configuration directory: `$HOME/.config/ais/cli`
 * CLI configuration filename: `cli.json`
 
-> For the most updated system filenames and configuration directories, please see [`fname/fname.go`](https://github.com/NVIDIA/aistore/blob/master/cmn/fname/fname.go) source.
+> For the most updated system filenames and configuration directories, please see [`fname/fname.go`](https://github.com/artashesbalabekyan/aistore/blob/master/cmn/fname/fname.go) source.
 
 
 When used the very first time, *or* if the `$HOME/.config/ais/cli/cli.json` does not exist, the latter will be created with default parameters:

@@ -6,7 +6,7 @@ FROM golang:1.20 AS builder
 ENV GOPATH="/go"
 ENV PATH="${GOPATH}/bin:${PATH}"
 
-RUN git clone https://github.com/NVIDIA/aistore.git && cd aistore && \
+RUN git clone https://github.com/artashesbalabekyan/aistore.git && cd aistore && \
     make cli xmeta aisloader && \
     mv cmd/cli/autocomplete /tmp/autocomplete && \
     cd .. && rm -rf aistore

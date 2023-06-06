@@ -7,7 +7,7 @@ package api
 import (
 	"time"
 
-	"github.com/NVIDIA/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/api/apc"
 )
 
 // String returns a pointer to the string value passed in.

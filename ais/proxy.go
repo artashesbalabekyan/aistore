@@ -23,25 +23,25 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/NVIDIA/aistore/3rdparty/glog"
-	"github.com/NVIDIA/aistore/api/apc"
-	"github.com/NVIDIA/aistore/api/env"
-	"github.com/NVIDIA/aistore/cluster"
-	"github.com/NVIDIA/aistore/cluster/meta"
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/archive"
-	"github.com/NVIDIA/aistore/cmn/atomic"
-	"github.com/NVIDIA/aistore/cmn/cos"
-	"github.com/NVIDIA/aistore/cmn/debug"
-	"github.com/NVIDIA/aistore/cmn/feat"
-	"github.com/NVIDIA/aistore/cmn/fname"
-	"github.com/NVIDIA/aistore/cmn/mono"
-	"github.com/NVIDIA/aistore/ext/dsort"
-	"github.com/NVIDIA/aistore/memsys"
-	"github.com/NVIDIA/aistore/nl"
-	"github.com/NVIDIA/aistore/stats"
-	"github.com/NVIDIA/aistore/xact"
-	"github.com/NVIDIA/aistore/xact/xreg"
+	"github.com/artashesbalabekyan/aistore/3rdparty/glog"
+	"github.com/artashesbalabekyan/aistore/api/apc"
+	"github.com/artashesbalabekyan/aistore/api/env"
+	"github.com/artashesbalabekyan/aistore/cluster"
+	"github.com/artashesbalabekyan/aistore/cluster/meta"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/archive"
+	"github.com/artashesbalabekyan/aistore/cmn/atomic"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/debug"
+	"github.com/artashesbalabekyan/aistore/cmn/feat"
+	"github.com/artashesbalabekyan/aistore/cmn/fname"
+	"github.com/artashesbalabekyan/aistore/cmn/mono"
+	"github.com/artashesbalabekyan/aistore/ext/dsort"
+	"github.com/artashesbalabekyan/aistore/memsys"
+	"github.com/artashesbalabekyan/aistore/nl"
+	"github.com/artashesbalabekyan/aistore/stats"
+	"github.com/artashesbalabekyan/aistore/xact"
+	"github.com/artashesbalabekyan/aistore/xact/xreg"
 	jsoniter "github.com/json-iterator/go"
 )
 
@@ -439,7 +439,7 @@ func (p *proxy) objectHandler(w http.ResponseWriter, r *http.Request) {
 //
 //	Amazon S3 is missing in the list that includes GCP and Azure. The reason
 //	for this is that AIS provides S3 compatibility layer via its "/s3" endpoint.
-//	S3 compatibility (see https://github.com/NVIDIA/aistore/blob/master/docs/s3compat.md)
+//	S3 compatibility (see https://github.com/artashesbalabekyan/aistore/blob/master/docs/s3compat.md)
 //	shall not be confused with a simple alternative URL Path mapping via easyURLHandler,
 //	whereby a path (e.g.) "gs/mybucket/myobject" gets replaced with
 //	"v1/objects/mybucket/myobject?provider=gcp" with _no_ other changes to the request

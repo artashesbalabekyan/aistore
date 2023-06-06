@@ -7,7 +7,7 @@ package kvdb
 import (
 	"strings"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/tidwall/buntdb"
 )

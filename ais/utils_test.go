@@ -7,7 +7,7 @@ package ais_test
 import (
 	"testing"
 
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 func TestBytesToStr(t *testing.T) {

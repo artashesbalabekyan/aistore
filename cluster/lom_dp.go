@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/NVIDIA/aistore/cmn"
-	"github.com/NVIDIA/aistore/cmn/cos"
+	"github.com/artashesbalabekyan/aistore/cmn"
+	"github.com/artashesbalabekyan/aistore/cmn/cos"
 )
 
 // NOTE: compare with ext/etl/dp.go
