@@ -1,4 +1,4 @@
-module github.com/NVIDIA/aistore/cmd/aisfs
+module github.com/artashesbalabekyan/aistore/cmd/aisfs
 
 go 1.20
 

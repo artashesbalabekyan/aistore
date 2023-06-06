@@ -1,4 +1,4 @@
-module github.com/NVIDIA/aistore/bench/hashspeed
+module github.com/artashesbalabekyan/aistore/bench/hashspeed
 
 go 1.14
 

@@ -1,4 +1,4 @@
-module github.com/NVIDIA/aistore/cmd/cli
+module github.com/artashesbalabekyan/aistore/cmd/cli
 
 go 1.20
 

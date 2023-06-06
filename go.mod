@@ -1,4 +1,4 @@
-module github.com/NVIDIA/aistore
+module github.com/artashesbalabekyan/aistore
 
 go 1.20
 
