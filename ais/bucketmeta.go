@@ -523,7 +523,7 @@ func defaultBckProps(args bckPropsArgs) (props *cmn.BucketProps) {
 		// Use HDFS props.
 		props.Extra.HDFS = args.bck.Props.Extra.HDFS
 	case args.bck.IsRemote():
-		debug.Assert(args.hdr != nil)
+		//debug.Assert(args.hdr != nil)
 		props.Versioning.Enabled = false
 		props = mergeRemoteBckProps(props, args.hdr)
 	default:
@@ -535,8 +535,9 @@ func defaultBckProps(args bckPropsArgs) (props *cmn.BucketProps) {
 }
 
 func mergeRemoteBckProps(props *cmn.BucketProps, header http.Header) *cmn.BucketProps {
-	debug.Assert(len(header) > 0)
+	//debug.Assert(len(header) > 0)
 	switch props.Provider {
+	// TODO: we can remove the AccessKeyID and SecretAccessKey
 	case apc.AWS:
 		props.Extra.AWS.CloudRegion = header.Get(apc.HdrS3Region)
 		props.Extra.AWS.Endpoint = header.Get(apc.HdrS3Endpoint)

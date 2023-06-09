@@ -491,18 +491,21 @@ func newClient(conf sessConf, tag string) (svc *s3.S3, region string, err error)
 	region = conf.region
 	accessKeyID := ""
 	secretAccessKey := ""
+	// TODO: instead of getting all these properties from the extra props, only get the extra prop SecretKey, use that to get the rest of the details needed for authentication
+	// TODO: make use of the KES client here to get the region, endpoint, accesskey and secret
+	// TODO: check /aistore/cluster/kes.go
 	if conf.bck != nil && conf.bck.Props != nil {
 		if region == "" {
-			region = conf.bck.Props.Extra.AWS.CloudRegion
+			region = "" // kes.GetAwsRegion(conf.bck.Props.Extra.AWS.SecretKey)
 		}
 		if conf.bck.Props.Extra.AWS.Endpoint != "" {
-			endpoint = conf.bck.Props.Extra.AWS.Endpoint
+			endpoint = "" // kes.GetAwsEndpoint(conf.bck.Props.Extra.AWS.SecretKey)
 		}
 		if conf.bck.Props.Extra.AWS.AccessKeyID != "" {
-			accessKeyID = conf.bck.Props.Extra.AWS.AccessKeyID
+			accessKeyID = "" // kes.GetAwsAccessKey(conf.bck.Props.Extra.AWS.SecretKey)
 		}
 		if conf.bck.Props.Extra.AWS.SecretAccessKey != "" {
-			secretAccessKey = conf.bck.Props.Extra.AWS.SecretAccessKey
+			secretAccessKey = "" // kes.GetAwsSecretAccess(conf.bck.Props.Extra.AWS.SecretKey)
 		}
 	}
 

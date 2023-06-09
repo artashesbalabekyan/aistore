@@ -358,7 +358,8 @@ func (p *proxy) setBucketProps(msg *apc.ActMsg, bck *meta.Bck, nprops *cmn.Bucke
 					bck, backend)
 				return "", err
 			}
-			remoteBckProps, _, err := p.headRemoteBck(bck.Bucket(), nil)
+			// TODO: accept Ais-Custom-SecretKey in the setBucketProps request
+			remoteBckProps, _, err := p.headRemoteBck(bck.Bucket(), nil, nil)
 			if err != nil {
 				return "", err
 			}

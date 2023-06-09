@@ -1328,9 +1328,11 @@ func (p *proxy) _bcr(w http.ResponseWriter, r *http.Request, query url.Values, m
 			errors.New("property 'extra.hdfs.ref_directory' must be specified when creating HDFS bucket"))
 		return
 	}
+
 	// remote: check existence and get (cloud) props
 	if bck.IsRemote() {
-		rhdr, statusCode, err := p.headRemoteBck(bck.RemoteBck(), nil)
+		// TODO: get secret key from extra props in body of this request and set in header below
+		rhdr, statusCode, err := p.headRemoteBck(bck.RemoteBck(), nil, http.Header{"Ais-Custom-SecretKey": {"something-from-current-request-msg"}})
 		if err != nil {
 			if bck.IsCloud() {
 				statusCode = http.StatusNotImplemented
@@ -3109,7 +3111,7 @@ func (p *proxy) getDaemonInfo(osi *meta.Snode) (si *meta.Snode, err error) {
 	return
 }
 
-func (p *proxy) headRemoteBck(bck *cmn.Bck, q url.Values) (header http.Header, statusCode int, err error) {
+func (p *proxy) headRemoteBck(bck *cmn.Bck, q url.Values, h http.Header) (header http.Header, statusCode int, err error) {
 	var (
 		tsi  *meta.Snode
 		path = apc.URLPathBuckets.Join(bck.Name)
@@ -3130,7 +3132,7 @@ func (p *proxy) headRemoteBck(bck *cmn.Bck, q url.Values) (header http.Header, s
 	cargs := allocCargs()
 	{
 		cargs.si = tsi
-		cargs.req = cmn.HreqArgs{Method: http.MethodHead, Path: path, Query: q}
+		cargs.req = cmn.HreqArgs{Method: http.MethodHead, Path: path, Query: q, Header: h}
 		cargs.timeout = apc.DefaultTimeout
 	}
 	res := p.call(cargs)

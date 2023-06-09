@@ -371,7 +371,7 @@ func (args *bckInitArgs) lookup(bck *meta.Bck) (hdr http.Header, code int, err e
 		q.Set(apc.QparamSilent, "true")
 	}
 retry:
-	hdr, code, err = args.p.headRemoteBck(bck.Bucket(), q)
+	hdr, code, err = args.p.headRemoteBck(bck.Bucket(), q, nil)
 
 	if (code == http.StatusUnauthorized || code == http.StatusForbidden) && args.tryHeadRemote {
 		if args.dontAddRemote {

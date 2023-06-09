@@ -472,6 +472,9 @@ func (t *target) httpbckhead(w http.ResponseWriter, r *http.Request, apireq *api
 		}
 	}
 	// + cloud
+	// TODO: take header Ais-Custom-SecretKey and head the bucket using its reference,
+	// 		 if set (expand apireq.bck to include the Ais-Custom-SecretKey option so it is included as extra prop), this is only needed if inBMD is false (I think)
+	// 		 apireq.bck.Props.Extra.AWS.SecretKey = r.Header.Get("Ais-Custom-SecretKey") <<--- or some other more logical place, I think at line 447
 	bucketProps, code, err = t.Backend(apireq.bck).HeadBucket(ctx, apireq.bck)
 	if err != nil {
 		if !inBMD {
